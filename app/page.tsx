@@ -37,42 +37,51 @@ function SiteHeader() {
 
 function Hero() {
   return (
-    <section id="top" className="relative min-h-screen overflow-hidden border-b border-line bg-[#030303] px-6 pt-28 md:px-10 md:pt-24">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_65%_43%,rgba(255,255,255,.085),transparent_31%),radial-gradient(circle_at_20%_80%,rgba(255,255,255,.045),transparent_32%)]" />
-      <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black via-black/70 to-transparent" />
+    <section className="relative min-h-screen overflow-hidden bg-background px-6 pt-28 md:px-10">
+      <img
+        src="/prism-hero-v2.png"
+        alt="A cut-glass prism refracting a beam of light into colour"
+        className="absolute inset-0 h-full w-full object-cover object-center opacity-95"
+      />
 
-      <div className="relative mx-auto grid min-h-[calc(100vh-7rem)] max-w-[1500px] items-center gap-10 md:grid-cols-[0.78fr_1.22fr]">
-        <div className="z-10 max-w-3xl pt-10 md:pt-0">
-          <p className="mb-8 text-xs uppercase tracking-[0.42em] text-foreground/42">Executive Visibility</p>
-          <h1 className="font-serif text-[3.7rem] font-light leading-[0.98] tracking-[-0.055em] text-balance sm:text-7xl lg:text-[6.6rem]">
+      <div className="absolute inset-0 bg-gradient-to-r from-background via-background/70 to-background/5" />
+      <div className="absolute inset-0 bg-gradient-to-b from-background/20 via-transparent to-background" />
+
+      <div className="relative z-10 flex min-h-[82vh] items-center">
+        <div className="max-w-4xl">
+          <p className="mb-8 text-xs uppercase tracking-[0.42em] text-foreground/45">
+            Executive Visibility
+          </p>
+
+          <h1 className="font-serif text-6xl font-light leading-[0.96] tracking-[-0.055em] text-foreground md:text-8xl lg:text-9xl">
             You already have
             <br />
             the information.
           </h1>
-          <p className="mt-8 max-w-3xl font-serif text-[2.65rem] font-light leading-[1.04] tracking-[-0.045em] text-foreground/58 text-balance sm:text-6xl lg:text-[5.2rem]">
-            The problem is seeing what it means.
+
+          <p className="mt-12 max-w-3xl font-serif text-5xl font-light leading-[1.02] tracking-[-0.045em] text-foreground/48 md:text-7xl">
+            The problem is seeing
+            <br />
+            what it means.
           </p>
-          <div className="mt-10 h-px w-20 bg-foreground/30" />
+
+          <div className="mt-12 h-px w-24 bg-foreground/35" />
+
           <p className="mt-8 max-w-md text-base leading-relaxed text-foreground/62 md:text-lg">
             Prism gives leadership the clarity and confidence to make better decisions about the estate, the risks and the future.
           </p>
-          <a href={reviewEmail} className="mt-9 inline-flex items-center gap-8 border border-foreground/20 px-7 py-4 text-sm text-foreground transition hover:bg-foreground hover:text-background">
+
+          <a
+            href={reviewEmail}
+            className="mt-9 inline-flex items-center gap-8 border border-foreground/20 px-7 py-4 text-sm text-foreground transition hover:bg-foreground hover:text-background"
+          >
             Request an Executive Review <span aria-hidden="true">→</span>
           </a>
-        </div>
-
-        <div className="relative min-h-[48vh] md:min-h-[78vh]">
-          <img
-            src="/prism-hero-v2.png"
-            alt="A cut-glass prism refracting a beam of light into colour"
-            className="absolute inset-0 h-full w-full object-cover object-center opacity-90"
-          />
         </div>
       </div>
     </section>
   )
 }
-
 function Premise() {
   return (
     <section className="relative overflow-hidden border-b border-line px-6 py-28 md:px-10 md:py-44">
