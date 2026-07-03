@@ -65,7 +65,7 @@ function Hero() {
           <img
             src="/prism-hero-v2.png"
             alt="A cut-glass prism refracting a beam of light into colour"
-            className="absolute inset-0 h-full w-full object-contain object-center drop-shadow-[0_0_80px_rgba(255,255,255,0.16)]"
+            className="absolute inset-0 h-full w-full object-cover object-center opacity-90"
           />
         </div>
       </div>
