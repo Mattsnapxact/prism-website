@@ -1,19 +1,15 @@
-import { HeroPrism } from '@/components/hero-prism'
-import { RelationshipField } from '@/components/relationship-field'
-
 const reviewEmail =
   'mailto:my@snapxact.com?subject=Executive%20Estate%20Intelligence%20Review&body=Hello%20Matthew%2C%0A%0AI%27d%20like%20to%20discuss%20an%20Executive%20Estate%20Intelligence%20Review.%0A%0AOrganisation%3A%0ARole%3A%0AWhat%20we%27re%20trying%20to%20understand%3A%0A'
 
 export default function Page() {
   return (
     <main className="min-h-screen bg-background text-foreground">
-      <HeroPrism />
       <SiteHeader />
-      <Revelation />
+      <Hero />
+      <Premise />
       <ExecutiveVisibility />
       <EstateIntelligence />
-      <RelationshipSection />
-      <ReviewSection />
+      <Review />
       <FinalCTA />
     </main>
   )
@@ -21,25 +17,16 @@ export default function Page() {
 
 function SiteHeader() {
   return (
-    <header className="sticky top-0 z-50 border-b border-line/80 bg-background/78 px-5 py-4 backdrop-blur-xl md:px-10">
-      <div className="mx-auto flex max-w-7xl items-center justify-between">
-        <a href="#top" className="font-sans text-xs font-medium tracking-[0.55em] text-foreground/92">
+    <header className="fixed inset-x-0 top-0 z-50 px-5 py-5 md:px-10">
+      <div className="mx-auto flex max-w-[1500px] items-center justify-between">
+        <a href="#top" className="font-sans text-[0.78rem] font-medium tracking-[0.58em] text-foreground/90">
           PRISM
         </a>
-        <nav className="hidden items-center gap-9 text-[0.72rem] text-foreground/55 md:flex">
-          <a href="#visibility" className="transition hover:text-foreground">
-            Executive Visibility
-          </a>
-          <a href="#estate" className="transition hover:text-foreground">
-            Estate Intelligence
-          </a>
-          <a href="#review" className="transition hover:text-foreground">
-            Review
-          </a>
-          <a
-            href={reviewEmail}
-            className="border border-line px-4 py-2 text-foreground/88 transition hover:border-foreground/30 hover:bg-foreground hover:text-background"
-          >
+        <nav className="hidden items-center gap-9 text-[0.74rem] text-foreground/62 md:flex">
+          <a href="#visibility" className="transition hover:text-foreground">Executive Visibility</a>
+          <a href="#estate" className="transition hover:text-foreground">Estate Intelligence</a>
+          <a href="#review" className="transition hover:text-foreground">Review</a>
+          <a href={reviewEmail} className="border border-foreground/18 px-4 py-2.5 text-foreground/88 transition hover:border-foreground/40 hover:bg-foreground hover:text-background">
             Request Review
           </a>
         </nav>
@@ -48,181 +35,151 @@ function SiteHeader() {
   )
 }
 
-function Revelation() {
+function Hero() {
   return (
-    <section id="top" className="relative overflow-hidden border-b border-line px-6 py-28 md:px-10 md:py-40">
-      <div className="absolute inset-0 opacity-[0.03] [background-image:linear-gradient(rgba(255,255,255,.5)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.5)_1px,transparent_1px)] [background-size:80px_80px]" />
-      <div className="mx-auto grid max-w-7xl gap-16 md:grid-cols-[0.9fr_1.1fr] md:items-end">
-        <div>
-          <p className="mb-8 text-xs uppercase tracking-[0.36em] text-muted-foreground">The premise</p>
-          <h2 className="max-w-3xl font-serif text-5xl font-light leading-[1.04] tracking-[-0.035em] text-balance md:text-7xl">
-            Nothing was missing.
+    <section id="top" className="relative min-h-screen overflow-hidden border-b border-line bg-[#030303] px-6 pt-28 md:px-10 md:pt-24">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_65%_43%,rgba(255,255,255,.085),transparent_31%),radial-gradient(circle_at_20%_80%,rgba(255,255,255,.045),transparent_32%)]" />
+      <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black via-black/70 to-transparent" />
+
+      <div className="relative mx-auto grid min-h-[calc(100vh-7rem)] max-w-[1500px] items-center gap-10 md:grid-cols-[0.78fr_1.22fr]">
+        <div className="z-10 max-w-3xl pt-10 md:pt-0">
+          <p className="mb-8 text-xs uppercase tracking-[0.42em] text-foreground/42">Executive Visibility</p>
+          <h1 className="font-serif text-[3.7rem] font-light leading-[0.98] tracking-[-0.055em] text-balance sm:text-7xl lg:text-[6.6rem]">
+            You already have
             <br />
-            Only unseen.
-          </h2>
+            the information.
+          </h1>
+          <p className="mt-8 max-w-3xl font-serif text-[2.65rem] font-light leading-[1.04] tracking-[-0.045em] text-foreground/58 text-balance sm:text-6xl lg:text-[5.2rem]">
+            The problem is seeing what it means.
+          </p>
+          <div className="mt-10 h-px w-20 bg-foreground/30" />
+          <p className="mt-8 max-w-md text-base leading-relaxed text-foreground/62 md:text-lg">
+            Prism gives leadership the clarity and confidence to make better decisions about the estate, the risks and the future.
+          </p>
+          <a href={reviewEmail} className="mt-9 inline-flex items-center gap-8 border border-foreground/20 px-7 py-4 text-sm text-foreground transition hover:bg-foreground hover:text-background">
+            Request an Executive Review <span aria-hidden="true">→</span>
+          </a>
         </div>
-        <div className="max-w-xl md:ml-auto">
-          <p className="text-xl font-light leading-relaxed text-foreground/72 md:text-2xl">
-            Most organisations already hold the signals they need. They sit across asset registers,
-            condition data, compliance records, funding pressure, operational judgement and local
-            knowledge.
-          </p>
-          <p className="mt-8 text-lg leading-relaxed text-foreground/52">
-            Prism exists to reveal the relationships between them — so leadership teams can see the
-            shape of decisions before they become problems.
-          </p>
+
+        <div className="relative min-h-[48vh] md:min-h-[78vh]">
+          <img
+            src="/images/prism-hero-cutglass.png"
+            alt="A cut-glass prism refracting a beam of light into colour"
+            className="absolute inset-0 h-full w-full object-contain object-center drop-shadow-[0_0_80px_rgba(255,255,255,0.16)]"
+          />
         </div>
       </div>
     </section>
+  )
+}
+
+function Premise() {
+  return (
+    <section className="relative overflow-hidden border-b border-line px-6 py-28 md:px-10 md:py-44">
+      <div className="absolute inset-0 opacity-[0.035] [background-image:linear-gradient(rgba(255,255,255,.5)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.5)_1px,transparent_1px)] [background-size:92px_92px]" />
+      <div className="relative mx-auto max-w-[1500px]">
+        <div className="max-w-5xl">
+          <p className="mb-10 text-xs uppercase tracking-[0.42em] text-muted-foreground">The premise</p>
+          <p className="font-serif text-5xl font-light leading-[1.03] tracking-[-0.045em] text-balance md:text-8xl">
+            The information was always there.
+            <br />
+            <span className="text-foreground/42">Only the relationships were hidden.</span>
+          </p>
+        </div>
+        <div className="mt-16 grid gap-10 md:grid-cols-3">
+          <QuietStatement title="Not more data." body="Most organisations already hold the signals they need." />
+          <QuietStatement title="Not another system." body="Systems record activity. Prism reveals meaning." />
+          <QuietStatement title="Not a dashboard." body="Leadership needs judgement, context and consequence." />
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function QuietStatement({ title, body }: { title: string; body: string }) {
+  return (
+    <article className="border-t border-line pt-7">
+      <h3 className="font-serif text-3xl font-light tracking-[-0.025em] md:text-4xl">{title}</h3>
+      <p className="mt-5 max-w-sm text-base leading-relaxed text-foreground/50">{body}</p>
+    </article>
   )
 }
 
 function ExecutiveVisibility() {
   return (
-    <section id="visibility" className="relative border-b border-line px-6 py-28 md:px-10 md:py-44">
-      <div className="mx-auto max-w-7xl">
-        <div className="grid gap-16 md:grid-cols-[0.8fr_1.2fr]">
-          <div>
-            <p className="mb-7 text-xs uppercase tracking-[0.38em] text-muted-foreground">01</p>
-            <h2 className="font-serif text-5xl font-light leading-none tracking-[-0.035em] md:text-7xl">
-              Executive
-              <br />
-              Visibility
-            </h2>
-            <p className="mt-8 text-xs uppercase tracking-[0.42em] text-muted-foreground">
-              A new executive discipline
-            </p>
-          </div>
-          <div className="grid gap-10 md:grid-cols-2">
-            <Statement
-              title="You cannot improve what you cannot see."
-              body="Visibility is not another report. It is the ability to see what scattered information means when viewed as one connected system."
-            />
-            <Statement
-              title="Interpretation changes behaviour."
-              body="The value is not in collecting more data. The value is in making the relationships legible enough for confident leadership decisions."
-            />
-            <Statement
-              title="The blind spot is rarely technical."
-              body="Schools, trusts and public organisations often have systems. What they lack is an executive view that connects condition, risk, capital and consequence."
-            />
-            <Statement
-              title="Prism reveals before it recommends."
-              body="The review begins by making the existing picture visible. Only then can priorities, trade-offs and action become clearer."
-            />
-          </div>
+    <section id="visibility" className="relative min-h-screen overflow-hidden border-b border-line px-6 py-28 md:px-10 md:py-44">
+      <img src="/images/horizon.png" alt="" className="absolute right-0 top-0 h-full w-[62%] object-cover opacity-40 mix-blend-screen" />
+      <div className="absolute inset-0 bg-gradient-to-r from-background via-background/85 to-background/30" />
+      <div className="relative mx-auto grid max-w-[1500px] gap-16 md:grid-cols-[0.72fr_1.28fr] md:items-end">
+        <div>
+          <p className="mb-8 text-xs uppercase tracking-[0.42em] text-muted-foreground">01 · Executive Visibility</p>
+          <h2 className="font-serif text-6xl font-light leading-[0.98] tracking-[-0.05em] text-balance md:text-8xl">
+            You cannot improve what you cannot see.
+          </h2>
+        </div>
+        <div className="max-w-2xl md:justify-self-end">
+          <p className="text-2xl font-light leading-relaxed text-foreground/68 md:text-3xl">
+            Executive Visibility is the discipline of making hidden organisational relationships visible.
+          </p>
+          <p className="mt-8 text-lg leading-relaxed text-foreground/50">
+            It does not ask leaders to collect more information. It changes how existing information is interpreted.
+          </p>
         </div>
       </div>
     </section>
-  )
-}
-
-function Statement({ title, body }: { title: string; body: string }) {
-  return (
-    <article className="border-t border-line pt-6">
-      <h3 className="font-serif text-3xl font-light leading-tight tracking-[-0.02em] text-foreground md:text-4xl">
-        {title}
-      </h3>
-      <p className="mt-6 max-w-md text-base leading-relaxed text-foreground/54">{body}</p>
-    </article>
   )
 }
 
 function EstateIntelligence() {
   return (
-    <section id="estate" className="relative overflow-hidden border-b border-line px-6 py-28 md:px-10 md:py-44">
-      <div className="absolute right-0 top-0 h-full w-1/2 opacity-20 [background:radial-gradient(circle_at_70%_40%,rgba(169,199,214,.28),transparent_38%)]" />
-      <div className="mx-auto grid max-w-7xl gap-16 md:grid-cols-[0.85fr_1.15fr] md:items-center">
+    <section id="estate" className="border-b border-line bg-[#f2f1ec] px-6 py-24 text-[#111] md:px-10 md:py-36">
+      <div className="mx-auto grid max-w-[1500px] gap-16 md:grid-cols-[0.82fr_1.18fr] md:items-center">
         <div>
-          <p className="mb-7 text-xs uppercase tracking-[0.38em] text-muted-foreground">02</p>
-          <h2 className="font-serif text-5xl font-light leading-none tracking-[-0.035em] md:text-7xl">
-            Estate
+          <p className="mb-8 text-xs uppercase tracking-[0.42em] text-black/42">02 · Estate Intelligence</p>
+          <h2 className="font-serif text-5xl font-light leading-[1.03] tracking-[-0.045em] text-balance md:text-7xl">
+            Clarity is not more data.
             <br />
-            Intelligence
+            <span className="italic">It is understanding the connections.</span>
           </h2>
-          <p className="mt-8 text-xs uppercase tracking-[0.42em] text-muted-foreground">
-            The first application
+          <div className="mt-10 h-px w-20 bg-black/35" />
+          <p className="mt-10 max-w-xl text-lg leading-relaxed text-black/62">
+            Estate Intelligence brings together the pieces that already exist across your estate, people and operations to reveal what matters, what is at risk, and where opportunity lies.
           </p>
+          <a href={reviewEmail} className="mt-9 inline-flex items-center gap-7 border-b border-black/50 pb-2 text-sm text-black transition hover:border-black">
+            Request an Estate Intelligence Review <span aria-hidden="true">→</span>
+          </a>
         </div>
-        <div className="max-w-2xl">
-          <p className="font-serif text-4xl font-light leading-tight tracking-[-0.025em] text-balance md:text-6xl">
-            A focused review.
-            <br />A wider perspective.
-          </p>
-          <div className="mt-10 h-px w-16 bg-foreground/35" />
-          <p className="mt-10 text-xl font-light leading-relaxed text-foreground/68">
-            Estate Intelligence is where Executive Visibility begins: a way of seeing the estate as
-            one connected picture rather than a set of separate registers, issues and suppliers.
-          </p>
-          <p className="mt-7 text-lg leading-relaxed text-foreground/50">
-            Condition, compliance, assets, funding and leadership judgement stop behaving like
-            isolated fragments. They begin to show priorities, exposures and decisions forming
-            beneath the surface.
-          </p>
+        <div className="relative min-h-[420px] overflow-hidden md:min-h-[560px]">
+          <img src="/images/network-field.png" alt="A field of connected nodes representing visible relationships" className="absolute inset-0 h-full w-full object-contain object-center" />
         </div>
       </div>
     </section>
   )
 }
 
-function RelationshipSection() {
-  return (
-    <section className="relative border-b border-line bg-[#f1f0eb] px-6 py-24 text-[#111] md:px-10 md:py-36">
-      <div className="mx-auto grid max-w-7xl gap-16 md:grid-cols-[0.8fr_1.2fr] md:items-center">
-        <div className="order-2 md:order-1">
-          <RelationshipField />
-        </div>
-        <div className="order-1 md:order-2 md:max-w-xl md:justify-self-end">
-          <p className="mb-7 text-xs uppercase tracking-[0.38em] text-black/45">The review</p>
-          <h2 className="font-serif text-5xl font-light leading-[1.03] tracking-[-0.035em] md:text-7xl">
-            Relationships become visible.
-          </h2>
-          <div className="mt-9 h-px w-16 bg-black/35" />
-          <p className="mt-9 text-lg leading-relaxed text-black/62">
-            The Executive Estate Intelligence Review surfaces the connections that usually remain
-            hidden: where risk touches funding, where compliance affects capital, and where local
-            issues create strategic exposure.
-          </p>
-        </div>
-      </div>
-    </section>
-  )
-}
+function Review() {
+  const items = [
+    ['Dispersed Information', 'Critical information exists across registers, systems, emails and local knowledge.'],
+    ['Hidden Connections', 'Relationships between issues create risk and opportunity, but usually remain invisible.'],
+    ['Strategic Exposure', 'What you do not see can shape capital decisions, audit confidence and leadership judgement.'],
+  ]
 
-function ReviewSection() {
   return (
     <section id="review" className="border-b border-line px-6 py-28 md:px-10 md:py-44">
-      <div className="mx-auto max-w-7xl">
-        <div className="grid gap-14 md:grid-cols-[1fr_1fr] md:items-start">
-          <div>
-            <p className="mb-8 text-xs uppercase tracking-[0.38em] text-muted-foreground">
-              Executive Estate Intelligence Review
-            </p>
-            <h2 className="max-w-3xl font-serif text-5xl font-light leading-[1.02] tracking-[-0.035em] md:text-7xl">
-              See the whole picture before the pressure arrives.
-            </h2>
-          </div>
-          <div className="md:pt-20">
-            <p className="text-xl font-light leading-relaxed text-foreground/70">
-              A senior-level review designed for CEOs, CFOs, trustees, school leaders and business
-              managers who need more than operational records.
-            </p>
-            <div className="mt-12 grid gap-px overflow-hidden border border-line bg-line md:grid-cols-2">
-              {['No new system', 'No long contract', 'No sales theatre', 'One focused review'].map(
-                (item) => (
-                  <div key={item} className="bg-background p-6 text-sm text-foreground/68">
-                    {item}
-                  </div>
-                ),
-              )}
-            </div>
-            <a
-              href={reviewEmail}
-              className="mt-12 inline-flex items-center gap-6 border border-foreground/16 px-7 py-4 text-sm text-foreground transition hover:bg-foreground hover:text-background"
-            >
-              Request an Executive Review <span aria-hidden="true">→</span>
-            </a>
-          </div>
+      <div className="mx-auto max-w-[1500px] text-center">
+        <p className="mb-8 text-xs uppercase tracking-[0.42em] text-muted-foreground">From information to insight</p>
+        <h2 className="mx-auto max-w-5xl font-serif text-5xl font-light leading-[1.03] tracking-[-0.045em] text-balance md:text-7xl">
+          See the full picture.
+          <br />
+          <span className="text-foreground/43">Lead with confidence.</span>
+        </h2>
+        <div className="mx-auto mt-20 grid max-w-6xl gap-12 text-left md:grid-cols-3">
+          {items.map(([title, body]) => (
+            <article key={title} className="border-t border-line pt-8 md:px-6">
+              <h3 className="font-serif text-3xl font-light tracking-[-0.025em]">{title}</h3>
+              <p className="mt-5 text-base leading-relaxed text-foreground/50">{body}</p>
+            </article>
+          ))}
         </div>
       </div>
     </section>
@@ -232,16 +189,13 @@ function ReviewSection() {
 function FinalCTA() {
   return (
     <section className="px-6 py-28 text-center md:px-10 md:py-44">
-      <p className="mx-auto max-w-4xl font-serif text-5xl font-light leading-[1.03] tracking-[-0.035em] text-balance md:text-7xl">
-        Clarity changes decisions.
-      </p>
-      <p className="mx-auto mt-8 max-w-xl text-lg leading-relaxed text-foreground/56">
+      <p className="mx-auto max-w-4xl font-serif text-5xl font-light leading-[1.03] tracking-[-0.045em] text-balance md:text-7xl">
         Prism reveals what intelligent organisations overlook.
       </p>
-      <a
-        href={reviewEmail}
-        className="mt-12 inline-flex items-center gap-6 border border-foreground/18 px-8 py-4 text-sm text-foreground transition hover:bg-foreground hover:text-background"
-      >
+      <p className="mx-auto mt-8 max-w-xl text-lg leading-relaxed text-foreground/56">
+        A focused executive review for leaders who need to see the relationships behind the risks, the estate and the decisions ahead.
+      </p>
+      <a href={reviewEmail} className="mt-12 inline-flex items-center gap-6 border border-foreground/18 px-8 py-4 text-sm text-foreground transition hover:bg-foreground hover:text-background">
         Request Your Review <span aria-hidden="true">→</span>
       </a>
       <div className="mx-auto mt-28 flex max-w-7xl items-center justify-between border-t border-line pt-8 text-xs text-foreground/38">
