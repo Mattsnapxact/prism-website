@@ -63,7 +63,7 @@ function Hero() {
 
         <div className="relative min-h-[48vh] md:min-h-[78vh]">
           <img
-            src="/images/prism-hero-cutglass.png"
+            src="/prism-hero-cutglass.png"
             alt="A cut-glass prism refracting a beam of light into colour"
             className="absolute inset-0 h-full w-full object-contain object-center drop-shadow-[0_0_80px_rgba(255,255,255,0.16)]"
           />
@@ -108,7 +108,7 @@ function QuietStatement({ title, body }: { title: string; body: string }) {
 function ExecutiveVisibility() {
   return (
     <section id="visibility" className="relative min-h-screen overflow-hidden border-b border-line px-6 py-28 md:px-10 md:py-44">
-      <img src="/images/horizon.png" alt="" className="absolute right-0 top-0 h-full w-[62%] object-cover opacity-40 mix-blend-screen" />
+      <img src="/horizon.png" alt="" className="absolute right-0 top-0 h-full w-[62%] object-cover opacity-40 mix-blend-screen" />
       <div className="absolute inset-0 bg-gradient-to-r from-background via-background/85 to-background/30" />
       <div className="relative mx-auto grid max-w-[1500px] gap-16 md:grid-cols-[0.72fr_1.28fr] md:items-end">
         <div>
@@ -150,7 +150,7 @@ function EstateIntelligence() {
           </a>
         </div>
         <div className="relative min-h-[420px] overflow-hidden md:min-h-[560px]">
-          <img src="/images/network-field.png" alt="A field of connected nodes representing visible relationships" className="absolute inset-0 h-full w-full object-contain object-center" />
+          <img src="/network-field.png" alt="A field of connected nodes representing visible relationships" className="absolute inset-0 h-full w-full object-contain object-center" />
         </div>
       </div>
     </section>
