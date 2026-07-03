@@ -37,7 +37,7 @@ function SiteHeader() {
 
 function Hero() {
   return (
-    <section className="relative min-h-screen overflow-hidden bg-background px-6 pt-28 md:px-10">
+    <section id="top" className="relative min-h-screen overflow-hidden bg-background px-6 pt-28 md:px-10">
       <img
         src="/prism-hero-v2.png"
         alt="A cut-glass prism refracting a beam of light into colour"
