@@ -1,0 +1,79 @@
+@import 'tailwindcss';
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+
+  --font-serif: var(--font-newsreader), Georgia, 'Times New Roman', serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+
+  /* Prism spectrum */
+  --color-spectrum-funding: var(--spectrum-funding);
+  --color-spectrum-risk: var(--spectrum-risk);
+  --color-spectrum-estates: var(--spectrum-estates);
+  --color-spectrum-leadership: var(--spectrum-leadership);
+}
+
+:root {
+  color-scheme: dark;
+
+  /* Almost black */
+  --background: #0a0a0a;
+  /* Soft white */
+  --foreground: #ededec;
+  /* Muted greys */
+  --muted: #161616;
+  --muted-foreground: #6b6b68;
+  --line: rgba(237, 237, 236, 0.08);
+
+  /* The single accent — only revealed through the prism */
+  --accent: #a9c7d6;
+
+  /* Refracted spectrum (only appears when light passes through the prism) */
+  --spectrum-funding: #d8b26a;
+  --spectrum-risk: #c76b5a;
+  --spectrum-estates: #6fa8a0;
+  --spectrum-leadership: #8fa9c9;
+}
+
+@layer base {
+  * {
+    border-color: var(--line);
+  }
+
+  html {
+    background-color: var(--background);
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background: rgba(169, 199, 214, 0.22);
+    color: var(--foreground);
+  }
+}
+
+/* Thin, quiet scrollbar to match the restraint of the design */
+::-webkit-scrollbar {
+  width: 9px;
+}
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+::-webkit-scrollbar-thumb {
+  background: #1f1f1f;
+  border-radius: 999px;
+}
+
+@utility text-balance {
+  text-wrap: balance;
+}
