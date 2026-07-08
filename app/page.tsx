@@ -457,12 +457,27 @@ function HowItWorks() {
 <p className="mt-8 max-w-md text-lg leading-relaxed text-white/72">
   Every Executive Intelligence Review is a structured investigation into the relationships hidden within your existing information. It brings together condition, compliance, assets, funding and operational insight into a single executive view designed to improve confidence in strategic decision-making.
 </p>
-          <a
-            href={reviewEmail}
-            className="mt-10 inline-flex items-center gap-6 border-b border-[#d7c7a2]/70 pb-3 text-sm text-white transition hover:border-white hover:text-[#d7c7a2]"
-          >
-            Request an Executive Review <span aria-hidden="true">→</span>
-          </a>
+          <div className="mt-10 flex flex-wrap gap-6">
+
+  <a
+    href={reviewEmail}
+    className="inline-flex items-center gap-6 border-b border-[#d7c7a2]/70 pb-3 text-sm text-white transition hover:border-white hover:text-[#d7c7a2]"
+  >
+    Request an Executive Review
+    <span aria-hidden="true">→</span>
+  </a>
+
+  <a
+    href="/estate-intelligence-review.pdf"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="inline-flex items-center gap-6 border-b border-white/25 pb-3 text-sm text-white/75 transition hover:border-[#d7c7a2] hover:text-[#d7c7a2]"
+  >
+    View Sample Review
+    <span aria-hidden="true">↗</span>
+  </a>
+
+</div>
         </div>
       </div>
     </section>
