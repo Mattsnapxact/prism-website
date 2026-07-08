@@ -442,14 +442,21 @@ function HowItWorks() {
           </div>
         </div>
         <div className="border border-white/[0.1] bg-white/[0.03] p-9 md:p-12">
-          <p className="text-xs uppercase tracking-[0.38em] text-white/50">Who you’ll be dealing with</p>
-          <p className="mt-8 font-serif text-3xl font-light leading-tight tracking-[-0.025em] text-white md:text-4xl">
-            Matthew Buckley-Baxter
-          </p>
-          <p className="mt-2 text-sm uppercase tracking-[0.28em] text-[#d7c7a2]/85">Founder, Prism</p>
-          <p className="mt-8 max-w-md text-lg leading-relaxed text-white/72">
-            Every review is read, interrogated and written by me. Your email comes to me directly, and so does the responsibility for what the Review finds.
-          </p>
+          <p className="text-xs uppercase tracking-[0.38em] text-white/50">
+  The Executive Review
+</p>
+
+<p className="mt-8 font-serif text-3xl font-light leading-tight tracking-[-0.025em] text-white md:text-4xl">
+  Built for leadership.
+</p>
+
+<p className="mt-2 text-sm uppercase tracking-[0.28em] text-[#d7c7a2]/85">
+  Executive Visibility
+</p>
+
+<p className="mt-8 max-w-md text-lg leading-relaxed text-white/72">
+  Every Executive Intelligence Review is a structured investigation into the relationships hidden within your existing information. It brings together condition, compliance, assets, funding and operational insight into a single executive view designed to improve confidence in strategic decision-making.
+</p>
           <a
             href={reviewEmail}
             className="mt-10 inline-flex items-center gap-6 border-b border-[#d7c7a2]/70 pb-3 text-sm text-white transition hover:border-white hover:text-[#d7c7a2]"
