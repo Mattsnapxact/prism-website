@@ -42,33 +42,36 @@ function Header() {
         <a href="#top" className="text-xs font-medium tracking-[0.62em] text-white/88">
           PRISM
         </a>
+
         <nav className="hidden items-center gap-9 text-[0.78rem] text-white/60 md:flex">
           <a href="#why" className="transition hover:text-white">
             Why Prism
           </a>
+
           <a href="#how" className="transition hover:text-white">
             How it works
           </a>
+
           <a href="#review" className="transition hover:text-white">
             The Review
           </a>
-         <div className="flex items-center gap-6">
-  <a
-    href="tel:+442038741866"
-    className="hidden text-sm tracking-[0.08em] text-white/70 transition hover:text-white lg:inline-block"
-  >
-    0203 874 1866
-  </a>
 
-  <a
-    href={reviewEmail}
-    className="border border-white/18 px-5 py-3 text-white/90 transition hover:border-white/50 hover:bg-white hover:text-black"
-  >
-    Request an Executive Review →
-  </a>
-</div>
+          <div className="flex items-center gap-6">
+            <a
+              href="tel:+442038741866"
+              className="hidden text-sm tracking-[0.08em] text-white/70 transition hover:text-white lg:inline-block"
+            >
+              0203 874 1866
+            </a>
 
-</nav>
+            <a
+              href={reviewEmail}
+              className="border border-white/18 px-5 py-3 text-white/90 transition hover:border-white/50 hover:bg-white hover:text-black"
+            >
+              Request an Executive Review →
+            </a>
+          </div>
+        </nav>
       </div>
     </header>
   )
