@@ -52,12 +52,20 @@ function Header() {
           <a href="#review" className="transition hover:text-white">
             The Review
           </a>
-          <a
-            href={reviewEmail}
-            className="border border-white/18 px-5 py-3 text-white/90 transition hover:border-white/50 hover:bg-white hover:text-black"
-          >
-            Request an Executive Review →
-          </a>
+         <div className="flex items-center gap-6">
+  <a
+    href="tel:+442038741866"
+    className="hidden text-sm tracking-[0.08em] text-white/70 transition hover:text-white lg:inline-block"
+  >
+    0203 874 1866
+  </a>
+
+  <a
+    href={reviewEmail}
+    className="border border-white/18 px-5 py-3 text-white/90 transition hover:border-white/50 hover:bg-white hover:text-black"
+  >
+    Request an Executive Review →
+  </a>
         </nav>
       </div>
     </header>
