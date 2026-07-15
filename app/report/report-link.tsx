@@ -8,15 +8,17 @@ type ReportLinkProps = {
   className?: string
   children: React.ReactNode
   source?: string
+  label?: string
 }
 
-export function ReportLink({ className, children, source }: ReportLinkProps) {
+export function ReportLink({ className, children, source, label }: ReportLinkProps) {
   return (
     <a
       href={reportUrl}
       target="_blank"
       rel="noopener noreferrer"
       className={className}
+      aria-label={label}
       onClick={() =>
         track('sample_report_opened', {
           source: source || 'direct',
