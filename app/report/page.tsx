@@ -7,8 +7,8 @@ export const metadata: Metadata = {
 
 export default function ReportPage() {
   return (
-    <main className="min-h-screen overflow-hidden bg-[#040404] text-white">
-      <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-black/55 backdrop-blur-xl">
+    <main className="h-screen overflow-hidden bg-[#040404] text-white">
+      <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-black/60 backdrop-blur-xl">
         <div className="mx-auto flex max-w-[1600px] items-center justify-between px-6 py-5 md:px-12">
           <a href="/" className="text-xs tracking-[0.62em] text-white">
             PRISM
@@ -32,16 +32,16 @@ export default function ReportPage() {
         </div>
       </header>
 
-      <section className="relative flex min-h-screen items-center px-6 pb-10 pt-28 md:px-12">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_65%_45%,rgba(215,199,162,0.12),transparent_30%)]" />
+      <section className="relative flex h-screen items-center overflow-hidden px-6 pt-20 md:px-12">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_68%_45%,rgba(215,199,162,0.12),transparent_32%)]" />
 
-        <div className="relative mx-auto grid w-full max-w-[1500px] gap-14 lg:grid-cols-[1fr_0.9fr] lg:items-center lg:gap-24">
+        <div className="relative mx-auto grid w-full max-w-[1450px] gap-14 lg:grid-cols-[1fr_0.9fr] lg:items-center lg:gap-24">
           <div>
             <p className="mb-8 text-xs uppercase tracking-[0.45em] text-[#d7c7a2]">
               Before you open the review
             </p>
 
-            <h1 className="font-serif text-5xl font-light leading-[0.96] tracking-[-0.05em] text-white sm:text-7xl lg:text-[6.4rem]">
+            <h1 className="font-serif text-5xl font-light leading-[0.96] tracking-[-0.05em] sm:text-7xl lg:text-[6rem]">
               Do not read it as
               <br />
               another report.
@@ -67,13 +67,16 @@ export default function ReportPage() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Read the Executive Review"
-            className="group relative mx-auto block w-full max-w-[560px]"
+            className="group relative mx-auto block w-full max-w-[520px]"
           >
             <div className="absolute inset-8 bg-[#d7c7a2]/10 blur-[110px]" />
 
-            <div className="relative rotate-[2deg] bg-[#ece6db] p-8 text-black shadow-[0_40px_130px_rgba(0,0,0,0.7)] transition duration-700 group-hover:rotate-0 sm:p-10">
+            <div className="relative rotate-[1.5deg] bg-[#ece6db] p-8 text-black shadow-[0_40px_130px_rgba(0,0,0,0.7)] transition duration-700 group-hover:rotate-0 sm:p-10">
               <div className="flex items-center justify-between border-b border-black/20 pb-6">
-                <span className="text-[0.55rem] tracking-[0.45em]">PRISM</span>
+                <span className="text-[0.55rem] tracking-[0.45em]">
+                  PRISM
+                </span>
+
                 <span className="text-[0.5rem] uppercase tracking-[0.3em] text-black/50">
                   Executive Review
                 </span>
@@ -109,7 +112,7 @@ export default function ReportPage() {
                 <div className="h-2 w-3/4 bg-black/15" />
               </div>
 
-              <p className="mt-14 text-[0.5rem] uppercase tracking-[0.25em] text-black/35">
+              <p className="mt-12 text-[0.5rem] uppercase tracking-[0.25em] text-black/35">
                 Better visibility leads to better decisions
               </p>
             </div>
