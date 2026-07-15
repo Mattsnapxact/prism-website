@@ -2,152 +2,135 @@ import type { Metadata } from 'next'
 import { ReportLink } from './report-link'
 
 export const metadata: Metadata = {
-  title: 'A Question for Your Board | Prism',
+  title: 'The Assumption Behind the Decision | Prism',
   description:
-    'Would your board be able to identify the assumptions underpinning its estate and financial decisions?',
+    'A question for leadership teams making long-term estate and financial decisions from fragmented information.',
 }
 
 type ReportPageProps = {
   searchParams: Promise<{ source?: string }>
 }
 
-const informationSources = [
-  'Estate records',
-  'Financial forecasts',
-  'Condition information',
-  'Compliance records',
-]
-
 export default async function ReportPage({ searchParams }: ReportPageProps) {
   const { source } = await searchParams
 
   return (
-    <main className="min-h-screen overflow-hidden bg-[#030303] text-[#f4f0e8] selection:bg-[#f4f0e8] selection:text-black">
+    <main className="min-h-screen overflow-hidden bg-[#030303] text-[#f4f0e8] selection:bg-[#d7c7a2] selection:text-black">
       <Header />
 
-      <section className="relative flex min-h-screen items-center overflow-hidden px-6 pb-24 pt-32 md:px-12">
-        <div className="absolute inset-0 opacity-70 [background:radial-gradient(circle_at_68%_42%,rgba(215,199,162,.12),transparent_28%),radial-gradient(circle_at_52%_50%,rgba(255,255,255,.05),transparent_42%)]" />
-        <div className="absolute left-1/2 top-1/2 h-px w-[78vw] -translate-x-1/2 bg-gradient-to-r from-transparent via-white/45 to-transparent shadow-[0_0_40px_rgba(255,255,255,.28)]" />
+      <section className="relative flex min-h-screen items-center overflow-hidden px-6 pb-20 pt-32 md:px-12">
+        <div className="absolute inset-0 [background:radial-gradient(circle_at_72%_46%,rgba(215,199,162,.12),transparent_24%),radial-gradient(circle_at_45%_48%,rgba(255,255,255,.045),transparent_38%)]" />
+        <div className="absolute left-[55%] top-1/2 h-px w-[88vw] -translate-x-1/2 -rotate-[7deg] bg-gradient-to-r from-transparent via-[#d7c7a2]/55 to-transparent shadow-[0_0_42px_rgba(215,199,162,.32)]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-[#030303]" />
 
-        <div className="relative mx-auto w-full max-w-[1500px] text-center">
-          <p className="mb-9 text-xs uppercase tracking-[0.48em] text-[#d7c7a2]">
-            One question
+        <div className="relative mx-auto w-full max-w-[1500px]">
+          <p className="mb-10 text-xs uppercase tracking-[0.48em] text-[#d7c7a2]">
+            A question for the board
           </p>
 
-          <h1 className="mx-auto max-w-6xl font-serif text-5xl font-light leading-[0.98] tracking-[-0.055em] text-white text-balance sm:text-7xl lg:text-[7.4rem]">
-            Every board makes assumptions.
+          <h1 className="max-w-6xl font-serif text-[3.7rem] font-light leading-[0.92] tracking-[-0.06em] text-white text-balance sm:text-7xl lg:text-[8.7rem]">
+            Every decision rests on an assumption.
           </h1>
 
-          <p className="mx-auto mt-8 max-w-5xl font-serif text-4xl font-light leading-[1.02] tracking-[-0.045em] text-[#d7c7a2] text-balance sm:text-6xl lg:text-[5.3rem]">
-            The question is whether they know which ones.
+          <p className="mt-9 max-w-4xl font-serif text-3xl font-light leading-[1.04] tracking-[-0.04em] text-[#d7c7a2] text-balance sm:text-5xl lg:text-[4.8rem]">
+            The dangerous ones are the assumptions nobody can see.
           </p>
 
-          <div className="mx-auto mt-12 h-px w-24 bg-[#d7c7a2]/60" />
-
-          <p className="mx-auto mt-9 max-w-2xl text-base leading-relaxed text-white/70 md:text-lg">
-            Most leadership teams already have the information. The challenge is knowing whether it supports the decisions they are making.
-          </p>
-
-          <a
-            href="#question"
-            className="mt-11 inline-flex items-center gap-8 border-b border-[#d7c7a2]/70 pb-3 text-sm text-white transition hover:border-white hover:text-[#d7c7a2]"
-          >
-            Consider the question <span aria-hidden="true">↓</span>
-          </a>
+          <div className="mt-12 flex flex-col gap-8 sm:flex-row sm:items-center sm:gap-12">
+            <a
+              href="#question"
+              className="inline-flex w-fit items-center gap-8 border-b border-[#d7c7a2]/70 pb-3 text-sm text-white transition hover:border-white hover:text-[#d7c7a2]"
+            >
+              See the question <span aria-hidden="true">↓</span>
+            </a>
+            <p className="max-w-md text-sm leading-relaxed text-white/48">
+              No software. No site visit. No new system. Only a clearer reading of the information you already hold.
+            </p>
+          </div>
         </div>
       </section>
 
-      <section id="question" className="relative border-y border-white/[0.08] bg-black px-6 py-28 md:px-12 md:py-40">
-        <div className="absolute inset-0 opacity-60 [background:radial-gradient(circle_at_20%_50%,rgba(215,199,162,.09),transparent_34%)]" />
-        <div className="relative mx-auto max-w-[1300px]">
+      <section id="question" className="relative flex min-h-[82vh] items-center border-y border-white/[0.08] bg-black px-6 py-28 md:px-12 md:py-40">
+        <div className="absolute inset-0 opacity-60 [background:radial-gradient(circle_at_18%_50%,rgba(215,199,162,.1),transparent_34%)]" />
+        <div className="relative mx-auto w-full max-w-[1350px]">
           <p className="mb-10 text-xs uppercase tracking-[0.42em] text-[#d7c7a2]">
-            If your board asked tomorrow
+            If your Chair asked tomorrow
           </p>
 
-          <blockquote className="max-w-6xl font-serif text-5xl font-light leading-[1.04] tracking-[-0.045em] text-white text-balance md:text-7xl">
-            “What assumptions are we making about our estate that we cannot currently prove?”
+          <blockquote className="max-w-7xl font-serif text-5xl font-light leading-[1.01] tracking-[-0.05em] text-white text-balance md:text-7xl lg:text-[6.8rem]">
+            “Which assumptions about our estate are shaping the financial plan — and what evidence supports them?”
           </blockquote>
 
-          <p className="mt-10 max-w-2xl text-lg leading-relaxed text-white/65">
-            Would there be one document that gave your leadership team a clear, evidence-based answer?
-          </p>
-        </div>
-      </section>
-
-      <section className="relative bg-[#050505] px-6 py-28 md:px-12 md:py-40">
-        <div className="mx-auto grid max-w-[1500px] gap-16 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-          <div>
-            <p className="mb-8 text-xs uppercase tracking-[0.42em] text-[#d7c7a2]">
-              Information is not visibility
+          <div className="mt-14 grid gap-10 border-t border-white/[0.1] pt-10 md:grid-cols-2 md:gap-20">
+            <p className="max-w-xl text-lg leading-relaxed text-white/68">
+              Could your organisation answer with one coherent document, rather than a collection of systems, spreadsheets and professional judgements?
             </p>
-            <h2 className="font-serif text-5xl font-light leading-[1.03] tracking-[-0.045em] text-white text-balance md:text-7xl">
-              The information usually already exists.
-            </h2>
-            <p className="mt-8 max-w-xl text-lg leading-relaxed text-white/70">
-              The difficulty is seeing whether separate records, forecasts and judgements tell one coherent strategic story.
+            <p className="max-w-xl font-serif text-3xl font-light leading-tight tracking-[-0.025em] text-[#d7c7a2] md:text-4xl">
+              Having information is not the same as being able to defend a decision.
             </p>
-          </div>
-
-          <div className="grid gap-px border border-white/[0.1] bg-white/[0.08] sm:grid-cols-2">
-            {informationSources.map((item, index) => (
-              <div key={item} className="min-h-44 bg-black p-8 md:p-10">
-                <p className="text-xs tracking-[0.3em] text-white/25">0{index + 1}</p>
-                <p className="mt-12 font-serif text-2xl font-light text-white/85">{item}</p>
-              </div>
-            ))}
           </div>
         </div>
       </section>
 
-      <section className="relative overflow-hidden border-y border-white/[0.08] bg-black px-6 py-28 md:px-12 md:py-44">
-        <div className="absolute inset-0 opacity-50 [background:radial-gradient(circle_at_65%_50%,rgba(255,255,255,.07),transparent_32%)]" />
-        <div className="relative mx-auto grid max-w-[1450px] gap-16 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+      <section className="relative overflow-hidden bg-[#050505] px-6 py-28 md:px-12 md:py-44">
+        <div className="absolute inset-0 opacity-50 [background:radial-gradient(circle_at_72%_48%,rgba(255,255,255,.07),transparent_30%)]" />
+        <div className="relative mx-auto grid max-w-[1450px] gap-20 lg:grid-cols-[0.92fr_1.08fr] lg:items-center">
           <div>
-            <p className="mb-8 text-xs uppercase tracking-[0.42em] text-[#d7c7a2]">
-              Before you view the sample
+            <p className="mb-9 text-xs uppercase tracking-[0.42em] text-[#d7c7a2]">
+              The sample Executive Review
             </p>
-            <h2 className="font-serif text-5xl font-light leading-[1.03] tracking-[-0.045em] text-white text-balance md:text-7xl">
-              Do not ask whether you need another report.
+
+            <h2 className="font-serif text-5xl font-light leading-[1.02] tracking-[-0.05em] text-white text-balance md:text-7xl">
+              Do not read it as another report.
             </h2>
-            <p className="mt-8 max-w-2xl font-serif text-3xl font-light leading-tight tracking-[-0.025em] text-[#d7c7a2] md:text-4xl">
-              Ask whether your board would make better decisions with the visibility contained within it.
+
+            <p className="mt-8 max-w-2xl font-serif text-3xl font-light leading-tight tracking-[-0.03em] text-[#d7c7a2] md:text-4xl">
+              Read it as the document your board would want before committing money.
+            </p>
+
+            <p className="mt-8 max-w-xl text-lg leading-relaxed text-white/62">
+              Prism brings together the records already held across finance, estates, compliance and operations, then identifies what those records imply for the decisions ahead.
             </p>
 
             <ReportLink
               source={source}
               className="mt-12 inline-flex items-center gap-8 border-b border-[#d7c7a2]/70 pb-3 text-sm text-white transition hover:border-white hover:text-[#d7c7a2]"
             >
-              View the sample Executive Review <span aria-hidden="true">→</span>
+              Open the sample Review <span aria-hidden="true">→</span>
             </ReportLink>
 
-            <div className="mt-12 flex flex-wrap gap-x-9 gap-y-4 border-t border-white/[0.09] pt-8 text-xs uppercase tracking-[0.3em] text-white/38">
-              <span>No software</span>
-              <span>No implementation</span>
-              <span>No site visit</span>
-              <span>No contract</span>
+            <div className="mt-12 flex flex-wrap gap-x-9 gap-y-4 border-t border-white/[0.09] pt-8 text-[0.68rem] uppercase tracking-[0.32em] text-white/38">
+              <span>Board-ready</span>
+              <span>Evidence-led</span>
+              <span>Independent</span>
+              <span>Produced from existing records</span>
             </div>
           </div>
 
-          <ReportPreview />
+          <ReportPreview source={source} />
         </div>
       </section>
 
-      <section className="relative bg-[#030303] px-6 py-28 text-center md:px-12 md:py-44">
-        <div className="mx-auto max-w-5xl">
-          <p className="mb-9 text-xs uppercase tracking-[0.42em] text-[#d7c7a2]">
-            One final question
+      <section className="relative flex min-h-[78vh] items-center border-t border-white/[0.08] bg-black px-6 py-28 md:px-12 md:py-44">
+        <div className="absolute inset-0 opacity-55 [background:radial-gradient(circle_at_50%_35%,rgba(215,199,162,.09),transparent_30%)]" />
+        <div className="relative mx-auto max-w-6xl text-center">
+          <p className="mb-10 text-xs uppercase tracking-[0.42em] text-[#d7c7a2]">
+            The question that remains
           </p>
-          <h2 className="font-serif text-5xl font-light leading-[1.03] tracking-[-0.045em] text-white text-balance md:text-7xl">
-            If your Chair asked for this report next Monday, how long would it take your organisation to produce it?
+
+          <h2 className="font-serif text-5xl font-light leading-[1.01] tracking-[-0.05em] text-white text-balance md:text-7xl lg:text-[6.5rem]">
+            How much of your board’s confidence comes from evidence — and how much comes from assumption?
           </h2>
-          <p className="mx-auto mt-9 max-w-2xl text-lg leading-relaxed text-white/62">
-            If the answer is not obvious, that is precisely why Prism exists.
+
+          <p className="mx-auto mt-10 max-w-2xl text-lg leading-relaxed text-white/58">
+            Prism exists to make that distinction visible before the decision has already been made.
           </p>
+
           <a
             href="mailto:matthew@prismgroup.uk?subject=Executive%20Estate%20Intelligence%20Review"
-            className="mt-11 inline-flex items-center gap-8 border-b border-[#d7c7a2]/70 pb-3 text-sm text-white transition hover:border-white hover:text-[#d7c7a2]"
+            className="mt-12 inline-flex items-center gap-8 border-b border-[#d7c7a2]/70 pb-3 text-sm text-white transition hover:border-white hover:text-[#d7c7a2]"
           >
-            Ask a question about the Review <span aria-hidden="true">→</span>
+            Ask Matthew a question <span aria-hidden="true">→</span>
           </a>
         </div>
       </section>
@@ -188,19 +171,23 @@ function Header() {
   )
 }
 
-function ReportPreview() {
+function ReportPreview({ source }: { source?: string }) {
   return (
-    <div className="relative mx-auto w-full max-w-2xl py-10 lg:py-20">
-      <div className="absolute inset-10 bg-[#d7c7a2]/10 blur-[90px]" />
-      <div className="relative mx-auto aspect-[0.72] w-[72%] rotate-[3deg] border border-white/20 bg-[#ece7dc] p-7 text-[#161616] shadow-[0_45px_120px_rgba(0,0,0,.75)] transition duration-700 hover:rotate-0 sm:p-10">
+    <ReportLink source={source} className="group relative mx-auto block w-full max-w-2xl py-10 lg:py-20" label="Open the sample Executive Review">
+      <div className="absolute inset-10 bg-[#d7c7a2]/10 blur-[100px] transition duration-700 group-hover:bg-[#d7c7a2]/16" />
+      <div className="absolute left-[9%] top-[12%] aspect-[0.72] w-[70%] -rotate-[7deg] border border-white/10 bg-white/[0.035]" />
+      <div className="relative mx-auto aspect-[0.72] w-[74%] rotate-[2.5deg] border border-white/20 bg-[#ece7dc] p-7 text-[#161616] shadow-[0_55px_140px_rgba(0,0,0,.8)] transition duration-700 group-hover:rotate-0 group-hover:scale-[1.015] sm:p-10">
         <div className="flex items-start justify-between border-b border-black/20 pb-6">
           <span className="text-[0.58rem] font-medium tracking-[0.48em]">PRISM</span>
           <span className="text-[0.48rem] uppercase tracking-[0.25em] text-black/45">Executive Review</span>
         </div>
-        <div className="mt-10 h-2 w-2/3 bg-black/75" />
-        <div className="mt-3 h-2 w-5/6 bg-black/20" />
-        <div className="mt-2 h-2 w-1/2 bg-black/20" />
-        <div className="mt-12 grid grid-cols-2 gap-4">
+        <p className="mt-10 font-serif text-3xl font-light leading-none tracking-[-0.04em] sm:text-5xl">
+          What the records imply.
+        </p>
+        <p className="mt-4 max-w-[80%] text-[0.55rem] uppercase leading-relaxed tracking-[0.2em] text-black/42">
+          Finance · Estate condition · Compliance · Future pressure
+        </p>
+        <div className="mt-10 grid grid-cols-2 gap-4">
           <div className="border border-black/15 p-4">
             <div className="h-1.5 w-1/2 bg-black/55" />
             <div className="mt-7 font-serif text-3xl">£2.4m</div>
@@ -224,6 +211,9 @@ function ReportPreview() {
           Better visibility leads to better decisions
         </p>
       </div>
-    </div>
+      <p className="mt-8 text-center text-xs uppercase tracking-[0.32em] text-white/35 transition group-hover:text-[#d7c7a2]">
+        Open the sample Review →
+      </p>
+    </ReportLink>
   )
 }
