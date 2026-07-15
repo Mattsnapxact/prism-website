@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ReportLink } from "./report-link";
 
 export const metadata: Metadata = {
   title: "The Sample Executive Review | Prism",
@@ -58,21 +59,16 @@ export default function ReportPage() {
               records imply for the decisions ahead.
             </p>
 
-            <a
-              href="/estate-intelligence-review.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
+            <ReportLink
+              label="Open the sample Executive Review"
               className="mt-12 inline-flex items-center gap-8 border-b border-[#d7c7a2] pb-3 text-lg transition hover:text-[#d7c7a2]"
             >
               Open the sample Review <span aria-hidden="true">→</span>
-            </a>
+            </ReportLink>
           </div>
 
-          <a
-            href="/estate-intelligence-review.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Open the sample Executive Review"
+          <ReportLink
+            label="Open the sample Executive Review"
             className="group relative mx-auto block w-full max-w-[520px]"
           >
             <div className="absolute inset-8 bg-[#d7c7a2]/10 blur-[110px]" />
@@ -122,7 +118,7 @@ export default function ReportPage() {
                 Better visibility leads to better decisions
               </p>
             </div>
-          </a>
+          </ReportLink>
         </div>
       </section>
     </main>
