@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Executive Review | Prism",
-  description: "Read the sample Prism Executive Review.",
+  title: "The Sample Executive Review | Prism",
+  description: "View the Prism sample Executive Review.",
 };
 
 export default function ReportPage() {
   return (
-    <main className="h-screen overflow-hidden bg-[#040404] text-white">
+    <main className="min-h-screen overflow-hidden bg-[#040404] text-white">
       <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-black/60 backdrop-blur-xl">
         <div className="mx-auto flex max-w-[1600px] items-center justify-between px-6 py-5 md:px-12">
           <a href="/" className="text-xs tracking-[0.62em] text-white">
@@ -32,16 +32,16 @@ export default function ReportPage() {
         </div>
       </header>
 
-      <section className="relative flex h-screen items-center overflow-hidden px-6 pt-20 md:px-12">
+      <section className="relative flex min-h-screen items-center overflow-hidden px-6 pb-10 pt-28 md:px-12">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_68%_45%,rgba(215,199,162,0.12),transparent_32%)]" />
 
         <div className="relative mx-auto grid w-full max-w-[1450px] gap-14 lg:grid-cols-[1fr_0.9fr] lg:items-center lg:gap-24">
           <div>
             <p className="mb-8 text-xs uppercase tracking-[0.45em] text-[#d7c7a2]">
-              Before you open the review
+              The sample Executive Review
             </p>
 
-            <h1 className="font-serif text-5xl font-light leading-[0.96] tracking-[-0.05em] sm:text-7xl lg:text-[6rem]">
+            <h1 className="font-serif text-5xl font-light leading-[0.96] tracking-[-0.05em] text-white sm:text-7xl lg:text-[6rem]">
               Do not read it as
               <br />
               another report.
@@ -52,13 +52,19 @@ export default function ReportPage() {
               money.
             </h2>
 
+            <p className="mt-10 max-w-xl text-lg leading-8 text-white/68">
+              Prism brings together the records already held across finance,
+              estates, compliance and operations, then identifies what those
+              records imply for the decisions ahead.
+            </p>
+
             <a
               href="/estate-intelligence-review.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-14 inline-flex items-center gap-8 border-b border-[#d7c7a2] pb-3 text-lg transition hover:text-[#d7c7a2]"
+              className="mt-12 inline-flex items-center gap-8 border-b border-[#d7c7a2] pb-3 text-lg transition hover:text-[#d7c7a2]"
             >
-              Read the Executive Review <span aria-hidden="true">→</span>
+              Open the sample Review <span aria-hidden="true">→</span>
             </a>
           </div>
 
@@ -66,7 +72,7 @@ export default function ReportPage() {
             href="/estate-intelligence-review.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="Read the Executive Review"
+            aria-label="Open the sample Executive Review"
             className="group relative mx-auto block w-full max-w-[520px]"
           >
             <div className="absolute inset-8 bg-[#d7c7a2]/10 blur-[110px]" />
