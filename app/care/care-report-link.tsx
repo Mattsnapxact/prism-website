@@ -1,6 +1,6 @@
 'use client'
 
-const reportUrl = '/prism-care-executive-review.pdf'
+const reportUrl = '/Prism_Care_Composite_Showcase_PRISM-SHOWCASE-CARE.pdf'
 
 type CareReportLinkProps = {
   className?: string
