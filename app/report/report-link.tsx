@@ -1,17 +1,25 @@
 'use client'
 
-import { track } from '@vercel/analytics'
-
 const reportUrl = '/estate-intelligence-review.pdf'
 
 type ReportLinkProps = {
   className?: string
   children: React.ReactNode
-  source?: string
   label?: string
 }
 
-export function ReportLink({ className, children, source, label }: ReportLinkProps) {
+export function ReportLink({
+  className,
+  children,
+  label,
+}: ReportLinkProps) {
+  function handleClick() {
+    window.gtag?.('event', 'sample_report_opened', {
+      event_category: 'engagement',
+      event_label: 'Executive Review PDF',
+    })
+  }
+
   return (
     <a
       href={reportUrl}
@@ -19,13 +27,19 @@ export function ReportLink({ className, children, source, label }: ReportLinkPro
       rel="noopener noreferrer"
       className={className}
       aria-label={label}
-      onClick={() =>
-        track('sample_report_opened', {
-          source: source || 'direct',
-        })
-      }
+      onClick={handleClick}
     >
       {children}
     </a>
   )
+}
+
+declare global {
+  interface Window {
+    gtag?: (
+      command: 'event',
+      eventName: string,
+      parameters?: Record<string, string | number | boolean>
+    ) => void
+  }
 }
