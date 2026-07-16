@@ -14,11 +14,12 @@ export function ReportLink({
   label,
 }: ReportLinkProps) {
   function handleClick() {
-    window.gtag?.('event', 'sample_report_opened', {
-      event_category: 'engagement',
-      event_label: 'Executive Review PDF',
-    })
-  }
+  window.gtag?.('event', 'sample_report_opened', {
+    event_category: 'engagement',
+    event_label: 'Executive Review PDF',
+    transport_type: 'beacon',
+  })
+}
 
   return (
     <a
