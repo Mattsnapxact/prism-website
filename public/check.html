@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Estate Intelligence Check | Prism</title>
+<meta name="description" content="A 60-second diagnostic for education and care sector leaders: find out how visible your organisation's future replacement, condition and funding pressure really is.">
+<meta name="robots" content="index,follow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="The Estate Intelligence Check | Prism">
+<meta property="og:description" content="You know what you own. Do you know what it's going to cost you? Take the 60-second Estate Intelligence Check.">
+<meta property="og:url" content="https://www.prismgroup.uk/check">
+<!-- <meta property="og:image" content="https://www.prismgroup.uk/check/og-image.jpg"> add a 1200x630 share image when available -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23070910'/%3E%3Cpath d='M16 6 L25 24 L7 24 Z' fill='none' stroke='%23c9a961' stroke-width='1.4'/%3E%3Cpath d='M16 6 L16 24' stroke='%23c9a961' stroke-width='0.6' opacity='0.6'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  /* ============================================================
+     DESIGN TOKENS
+     Prism — cinematic dark editorial. Committed single visual
+     world (deliberate, not an oversight): a high-end intelligence
+     firm, not a SaaS product. See design notes at end of file.
+     ============================================================ */
+  :root{
+    --void:#07080d;
+    --navy-950:#0a0e1a;
+    --navy-900:#0e1424;
+    --navy-850:#111a2e;
+    --navy-800:#141c33;
+    --navy-700:#1c2846;
+    --line:rgba(201,178,128,.15);
+    --line-strong:rgba(201,178,128,.32);
+    --line-flat:rgba(234,231,222,.09);
+    --ink:#eae7de;
+    --ink-dim:#9aa1b8;
+    --ink-faint:#666d85;
+    --gold:#c9a961;
+    --gold-bright:#e8cf94;
+    --gold-dim:rgba(201,169,97,.5);
+    --glass:rgba(234,231,222,.035);
+    --glass-strong:rgba(234,231,222,.065);
+    --good:#7fb599;
+    --warn:#cf9c5c;
+    --risk:#c77e6c;
+    --shadow-lg:0 40px 100px -40px rgba(0,0,0,.75);
+    --shadow-md:0 20px 50px -25px rgba(0,0,0,.6);
+    --serif:'Newsreader', Georgia, 'Times New Roman', serif;
+    --sans:'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --mono:'IBM Plex Mono', 'SFMono-Regular', Menlo, Consolas, monospace;
+    --measure:640px;
+    --edge: clamp(20px, 6vw, 64px);
+  }
+
+  *,*::before,*::after{ box-sizing:border-box; }
+  html{ background:var(--void); scroll-behavior:smooth; height:100%; }
+  body{
+    margin:0;
+    height:100%;
+    background:var(--void);
+    color:var(--ink);
+    font-family:var(--sans);
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+    overflow:hidden;
+  }
+
+  h1,h2,h3,h4{ font-family:var(--serif); font-weight:500; line-height:1.12; margin:0; text-wrap:balance; }
+  p{ margin:0; }
+  a{ color:inherit; }
+  button{ font-family:inherit; }
+  img,svg{ display:block; max-width:100%; }
+
+  .eyebrow{
+    font-family:var(--sans); font-weight:700; font-size:11.5px; letter-spacing:.22em;
+    text-transform:uppercase; color:var(--gold); display:inline-flex; align-items:center; gap:10px;
+  }
+  .eyebrow::before{ content:''; width:22px; height:1px; background:var(--gold-dim); display:block; }
+
+  .measure{ max-width:var(--measure); }
+  .wrap{ max-width:1180px; margin-inline:auto; padding-inline:var(--edge); }
+
+  ::selection{ background:var(--gold); color:var(--navy-950); }
+  :focus-visible{ outline:1.5px solid var(--gold-bright); outline-offset:3px; }
+
+  /* subtle grain / vignette so flat navy never looks like a plain SaaS bg */
+  body::before{
+    content:''; position:fixed; inset:0; pointer-events:none; z-index:0;
+    background:
+      radial-gradient(ellipse 90% 60% at 50% -10%, rgba(201,169,97,.07), transparent 60%),
+      radial-gradient(ellipse 70% 50% at 100% 100%, rgba(28,40,70,.5), transparent 60%);
+  }
+
+  /* ============================================================
+     BRAND / HEADER (lives inside the stage now — see STAGE below)
+     ============================================================ */
+  .brand{ display:flex; align-items:center; gap:10px; text-decoration:none; }
+  .brand svg{ width:20px; height:20px; }
+  .brand-word{ font-family:var(--sans); font-weight:800; font-size:14.5px; letter-spacing:.18em; color:var(--ink); }
+
+  .header-progress{
+    font-family:var(--mono); font-size:12.5px; letter-spacing:.06em; color:var(--ink-dim);
+    display:flex; align-items:center; gap:10px; opacity:0; transform:translateY(-4px);
+    transition:opacity .3s ease, transform .3s ease;
+  }
+  .header-progress.show{ opacity:1; transform:none; }
+  .header-progress b{ color:var(--gold-bright); font-weight:600; }
+
+  .cta-row{ display:flex; flex-wrap:wrap; align-items:center; gap:18px; margin-top:6px; }
+
+  .btn{
+    appearance:none; border:none; cursor:pointer; font-family:var(--sans); font-weight:700;
+    font-size:14.5px; letter-spacing:.03em; display:inline-flex; align-items:center; gap:10px;
+    padding:16px 26px; transition:background .25s ease, color .25s ease, border-color .25s ease, transform .25s ease;
+  }
+  .btn-primary{
+    background:var(--gold); color:var(--navy-950); border:1px solid var(--gold);
+  }
+  .btn-primary:hover{ background:var(--gold-bright); border-color:var(--gold-bright); transform:translateY(-1px); }
+  .btn-primary svg{ width:14px; height:14px; transition:transform .25s ease; }
+  .btn-primary:hover svg{ transform:translateX(3px); }
+
+  .btn-ghost{
+    background:transparent; color:var(--ink-dim); border:1px solid var(--line-flat);
+  }
+  .btn-ghost:hover{ color:var(--ink); border-color:var(--line-strong); }
+
+  .reassure{
+    font-family:var(--mono); font-size:12px; letter-spacing:.05em; color:var(--ink-faint);
+  }
+
+  /* ============================================================
+     STAGE — the full-viewport diagnostic (this IS the page)
+     ============================================================ */
+  .stage{
+    position:fixed; inset:0; z-index:100; background:var(--navy-950);
+    display:flex; flex-direction:column;
+  }
+  .stage::before{
+    content:''; position:absolute; inset:0; pointer-events:none;
+    background:radial-gradient(ellipse 80% 60% at 50% 0%, rgba(201,169,97,.08), transparent 55%);
+  }
+  .stage-top{
+    display:flex; align-items:center; justify-content:space-between; padding:20px var(--edge);
+    position:relative; z-index:2;
+  }
+  .stage-progress-track{
+    position:absolute; top:0; left:0; height:2px; background:var(--gold);
+    transition:width .5s cubic-bezier(.4,0,.2,1); width:0%;
+  }
+
+  .stage-body{
+    flex:1; overflow-y:auto; display:flex; flex-direction:column; align-items:center;
+    padding:10px var(--edge) 70px; position:relative; z-index:2;
+  }
+  .panel{ width:100%; max-width:720px; margin:auto; padding:34px 0; }
+  .panel[hidden]{ display:none; }
+
+  .panel-eyebrow{ text-align:center; display:flex; justify-content:center; margin-bottom:18px; }
+  .panel h2.panel-title{ text-align:center; font-size:clamp(24px,3.6vw,34px); }
+  .panel .panel-sub{ text-align:center; color:var(--ink-dim); margin-top:14px; font-size:15.5px; max-width:520px; margin-inline:auto; }
+
+  .micro-copy{
+    text-align:center; font-family:var(--serif); font-style:italic; color:var(--gold-bright);
+    font-size:14.5px; height:20px; margin-top:18px; opacity:0; transition:opacity .4s ease;
+  }
+  .micro-copy.show{ opacity:1; }
+
+  /* sector cards */
+  .sector-grid{ display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-top:44px; }
+  @media (max-width:600px){ .sector-grid{ grid-template-columns:1fr; } }
+  .sector-card{
+    background:var(--glass); border:1px solid var(--line); padding:34px 26px; text-align:left;
+    cursor:pointer; color:var(--ink); transition:border-color .25s ease, background .25s ease, transform .25s ease;
+    position:relative;
+  }
+  .sector-card:hover{ border-color:var(--line-strong); background:var(--glass-strong); transform:translateY(-2px); }
+  .sector-card .sc-num{ font-family:var(--mono); font-size:12px; color:var(--gold); letter-spacing:.06em; }
+  .sector-card h3{ font-size:22px; margin-top:14px; }
+  .sector-card p{ color:var(--ink-dim); font-size:13.5px; margin-top:10px; }
+
+  /* question panel */
+  .q-text{
+    font-family:var(--serif); font-size:clamp(21px,3.2vw,28px); text-align:center; text-wrap:balance;
+    line-height:1.35; max-width:600px; margin-inline:auto;
+  }
+  .q-dim{ text-align:center; margin-top:14px; }
+  .q-dim span{ font-family:var(--mono); font-size:11px; letter-spacing:.08em; color:var(--ink-faint); text-transform:uppercase; }
+
+  .options{ display:flex; flex-direction:column; gap:10px; margin-top:40px; }
+  .option{
+    background:var(--glass); border:1px solid var(--line-flat); color:var(--ink);
+    text-align:left; padding:17px 22px; cursor:pointer; font-size:15px; font-family:var(--sans); font-weight:500;
+    display:flex; align-items:center; gap:14px; transition:border-color .2s ease, background .2s ease;
+  }
+  .option .opt-dot{ width:8px; height:8px; border:1px solid var(--ink-faint); flex:none; transition:.2s; }
+  .option:hover{ border-color:var(--line-strong); background:var(--glass-strong); }
+  .option:hover .opt-dot{ border-color:var(--gold-bright); }
+  .option.selected{ border-color:var(--gold); background:rgba(201,169,97,.08); }
+  .option.selected .opt-dot{ background:var(--gold); border-color:var(--gold); }
+
+  .q-nav{ display:flex; justify-content:center; margin-top:30px; }
+  .q-back{ background:none; border:none; color:var(--ink-faint); font-size:13px; cursor:pointer; display:flex; align-items:center; gap:6px; }
+  .q-back:hover{ color:var(--ink-dim); }
+  .q-back svg{ width:12px; height:12px; }
+
+  /* lead form */
+  .lead-note{
+    text-align:center; color:var(--ink-dim); font-size:14px; margin-top:18px; max-width:460px; margin-inline:auto;
+  }
+  .lead-form{ margin-top:38px; display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  .field{ display:flex; flex-direction:column; gap:8px; }
+  .field.full{ grid-column:1 / -1; }
+  .field label{ font-size:11.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-faint); font-weight:700; }
+  .field input, .field select{
+    background:var(--navy-900); border:1px solid var(--line-flat); color:var(--ink); padding:13px 14px;
+    font-family:var(--sans); font-size:14.5px; width:100%; transition:border-color .2s ease;
+  }
+  .field input:focus, .field select:focus{ border-color:var(--gold-dim); outline:none; }
+  .field select{ appearance:none; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath fill='%239aa1b8' d='M1 1l5 5 5-5'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 14px center; }
+  @media (max-width:560px){ .lead-form{ grid-template-columns:1fr; } }
+
+  .lead-submit{ margin-top:26px; display:flex; flex-direction:column; align-items:center; gap:14px; }
+  .privacy-line{ font-size:12px; color:var(--ink-faint); text-align:center; max-width:440px; }
+
+  /* result panel */
+  .score-block{ text-align:center; }
+  .score-num{ font-family:var(--mono); font-size:clamp(64px,14vw,108px); font-weight:600; color:var(--gold-bright); line-height:1; letter-spacing:-.02em; }
+  .score-num sup{ font-size:.28em; color:var(--ink-faint); font-family:var(--mono); font-weight:500; top:-.5em; }
+  .score-headline{ font-size:clamp(22px,3.2vw,30px); margin-top:20px; }
+  .score-sub{ color:var(--ink-dim); margin-top:10px; font-size:15.5px; }
+
+  .dims{ display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-top:52px; }
+  @media (max-width:640px){ .dims{ grid-template-columns:1fr 1fr; } }
+  .dim-card{ border:1px solid var(--line-flat); padding:18px 14px; background:var(--glass); }
+  .dim-card .dim-label{ font-size:11px; letter-spacing:.04em; color:var(--ink-dim); font-weight:700; text-transform:uppercase; min-height:28px; }
+  .dim-card .dim-pct{ font-family:var(--mono); font-size:26px; color:var(--ink); margin-top:10px; }
+  .dim-bar{ height:3px; background:var(--line-flat); margin-top:12px; position:relative; overflow:hidden; }
+  .dim-bar i{ position:absolute; left:0; top:0; bottom:0; width:0%; background:var(--gold); transition:width 1.1s cubic-bezier(.22,.7,.24,1) .2s; }
+  .dim-card.weak .dim-pct{ color:var(--warn); }
+  .dim-card.weak .dim-bar i{ background:var(--warn); }
+
+  .insight{
+    margin-top:56px; padding:34px clamp(20px,4vw,44px); background:var(--glass); border:1px solid var(--line);
+    position:relative;
+  }
+  .insight::before,.insight::after{ content:''; position:absolute; width:12px; height:12px; border:1px solid var(--gold-dim); }
+  .insight::before{ top:-1px; left:-1px; border-right:none; border-bottom:none; }
+  .insight::after{ bottom:-1px; right:-1px; border-left:none; border-top:none; }
+  .insight .eyebrow{ margin-bottom:4px; }
+  .insight h3{ font-size:clamp(19px,2.6vw,24px); margin-top:14px; color:var(--gold-bright); }
+  .insight p{ margin-top:16px; color:var(--ink-dim); font-size:15px; line-height:1.7; }
+  .insight p + p{ margin-top:12px; }
+
+  .benchmark{ margin-top:30px; text-align:center; }
+  .benchmark p{ font-family:var(--serif); font-style:italic; color:var(--ink-dim); font-size:15px; max-width:520px; margin-inline:auto; line-height:1.6; }
+
+  .bridge{ margin-top:80px; padding-top:60px; border-top:1px solid var(--line-flat); text-align:center; }
+  .bridge h3{ font-size:clamp(23px,3.4vw,30px); }
+  .bridge p.lead-p{ color:var(--ink-dim); margin-top:18px; font-size:15.5px; max-width:520px; margin-inline:auto; line-height:1.7; }
+  .bridge-then{ font-family:var(--serif); font-style:italic; color:var(--gold-bright); font-size:17px; margin-top:22px; }
+
+  .steps{ display:flex; align-items:stretch; justify-content:center; gap:0; margin-top:44px; flex-wrap:wrap; }
+  .step{ flex:1; min-width:170px; max-width:220px; padding:0 18px; text-align:left; }
+  .step .step-num{ font-family:var(--mono); font-size:12px; color:var(--gold); }
+  .step h4{ font-family:var(--sans); font-weight:700; font-size:14.5px; margin-top:10px; color:var(--ink); }
+  .step p{ font-size:13px; color:var(--ink-dim); margin-top:8px; line-height:1.55; }
+  .step-arrow{ display:flex; align-items:center; color:var(--gold-dim); padding:0 6px; }
+  .step-arrow svg{ width:16px; height:16px; }
+  @media (max-width:640px){ .steps{ flex-direction:column; gap:22px; align-items:center; } .step{ text-align:center; max-width:280px; } .step-arrow{ transform:rotate(90deg); } }
+
+  .final-cta{ margin-top:70px; text-align:center; }
+  .final-cta h3{ font-size:clamp(21px,3vw,26px); }
+  .final-cta p{ color:var(--ink-dim); margin-top:14px; font-size:15px; max-width:460px; margin-inline:auto; line-height:1.65; }
+  .final-cta .cta-row{ justify-content:center; margin-top:28px; }
+  .cta-confirm{ font-family:var(--serif); font-style:italic; color:var(--good); font-size:15px; }
+
+  .stage-foot-space{ height:40px; }
+
+  /* utility */
+  .sr-only{ position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; }
+
+  @media (prefers-reduced-motion: reduce){
+    *,*::before,*::after{ animation-duration:.001ms !important; transition-duration:.001ms !important; scroll-behavior:auto !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     STAGE — the diagnostic itself. This is the whole page: no
+     separate marketing/welcome screen, it opens straight on
+     "Before we begin".
+     ============================================================ -->
+<div class="stage" id="stage" role="main" aria-label="Estate Intelligence Check">
+  <div class="stage-progress-track" id="stageProgress"></div>
+  <div class="stage-top">
+    <a href="https://www.prismgroup.uk" class="brand" target="_blank" rel="noopener" aria-label="Prism — visit prismgroup.uk">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 4 L28 26 L4 26 Z" fill="none" stroke="#c9a961" stroke-width="1.3"/><path d="M16 4 L16 26" stroke="#c9a961" stroke-width="0.6" opacity="0.55"/></svg>
+      <span class="brand-word" style="font-size:12.5px;">ESTATE INTELLIGENCE CHECK</span>
+    </a>
+    <div class="header-progress" id="headerProgress"><span id="hpText">01 / 05</span></div>
+  </div>
+
+  <div class="stage-body" id="stageBody">
+
+    <!-- SECTOR -->
+    <div class="panel" data-panel="sector">
+      <div class="panel-eyebrow"><span class="eyebrow">BEFORE WE BEGIN</span></div>
+      <h2 class="panel-title">Which environment best describes<br>your organisation?</h2>
+      <div class="sector-grid">
+        <button class="sector-card" data-sector="education" type="button">
+          <div class="sc-num">01</div>
+          <h3>Education</h3>
+          <p>Schools &middot; Multi-Academy Trusts &middot; Independent Schools &middot; Colleges</p>
+        </button>
+        <button class="sector-card" data-sector="care" type="button">
+          <div class="sc-num">02</div>
+          <h3>Care</h3>
+          <p>Care Groups &middot; Care Homes &middot; Supported Living &middot; Social Care</p>
+        </button>
+      </div>
+      <p class="reassure" style="text-align:center;margin-top:32px;">60 SECONDS &middot; NO SOFTWARE &middot; NO COMMITMENT</p>
+    </div>
+
+    <!-- QUESTION -->
+    <div class="panel" data-panel="question" hidden>
+      <div class="panel-eyebrow"><span class="eyebrow" id="qDimLabel">ASSET VISIBILITY</span></div>
+      <p class="q-text" id="qText"></p>
+      <div class="options" id="qOptions"></div>
+      <p class="micro-copy" id="microCopy"></p>
+      <div class="q-nav">
+        <button class="q-back" id="qBackBtn" type="button">
+          <svg viewBox="0 0 16 16" fill="none"><path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Back
+        </button>
+      </div>
+    </div>
+
+    <!-- LEAD FORM -->
+    <div class="panel" data-panel="lead" hidden>
+      <div class="panel-eyebrow"><span class="eyebrow">RESULT READY</span></div>
+      <h2 class="panel-title">Your Estate Intelligence Score is ready.</h2>
+      <p class="panel-sub">Tell us where to send your result.</p>
+      <p class="lead-note">We&rsquo;ll use your answers to generate your individual Estate Intelligence result &mdash; a personal read on your organisation&rsquo;s visibility, not a generic score.</p>
+
+      <form class="lead-form" id="leadForm" novalidate>
+        <div class="field">
+          <label for="fFirst">First name</label>
+          <input type="text" id="fFirst" name="firstName" autocomplete="given-name" required>
+        </div>
+        <div class="field">
+          <label for="fLast">Last name</label>
+          <input type="text" id="fLast" name="lastName" autocomplete="family-name" required>
+        </div>
+        <div class="field full">
+          <label for="fOrg">Organisation</label>
+          <input type="text" id="fOrg" name="organisation" autocomplete="organization" required>
+        </div>
+        <div class="field">
+          <label for="fTitle">Job title</label>
+          <input type="text" id="fTitle" name="jobTitle" autocomplete="organization-title" placeholder="e.g. CFO, Estates Director">
+        </div>
+        <div class="field">
+          <label for="fOrgType" id="fOrgTypeLabel">Organisation type</label>
+          <select id="fOrgType" name="orgType" required></select>
+        </div>
+        <div class="field">
+          <label for="fEmail">Email</label>
+          <input type="email" id="fEmail" name="email" autocomplete="email" required>
+        </div>
+        <div class="field">
+          <label for="fPhone">Phone <span style="text-transform:none;font-weight:500;">(optional)</span></label>
+          <input type="tel" id="fPhone" name="phone" autocomplete="tel">
+        </div>
+
+        <div class="field full lead-submit">
+          <button class="btn btn-primary" type="submit">
+            Reveal My Score
+            <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <p class="privacy-line">No mailing list you didn&rsquo;t ask for. Prism never shares your details with third parties.</p>
+        </div>
+      </form>
+    </div>
+
+    <!-- RESULT -->
+    <div class="panel" data-panel="result" hidden style="max-width:760px;">
+      <div class="score-block">
+        <span class="eyebrow" style="justify-content:center;">ESTATE INTELLIGENCE SCORE</span>
+        <div class="score-num" style="margin-top:18px;"><span id="scoreNum">0</span><sup>/100</sup></div>
+        <h2 class="score-headline" id="scoreHeadline"></h2>
+        <p class="score-sub" id="scoreSub"></p>
+      </div>
+
+      <div class="dims" id="dimsGrid"></div>
+
+      <div class="insight">
+        <span class="eyebrow">YOUR BIGGEST VISIBILITY GAP</span>
+        <h3 id="insightTitle"></h3>
+        <div id="insightBody"></div>
+      </div>
+
+      <div class="benchmark">
+        <p>Organisations often discover that their visibility is strongest around what they own &mdash; and weakest around what they will need to spend next.</p>
+      </div>
+
+      <div class="bridge">
+        <span class="eyebrow" style="justify-content:center;">THE PRISM BRIDGE</span>
+        <h3 style="margin-top:16px;">The information already exists.<br>The insight doesn&rsquo;t.</h3>
+        <p class="lead-p">Your organisation probably already holds much of the information needed to understand future estate pressure. The challenge is turning that information into something a leadership team can see, understand and act upon.</p>
+        <p class="bridge-then">That&rsquo;s where Prism comes in.</p>
+
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">01</div>
+            <h4>Existing information</h4>
+            <p>We work with the records you already hold.</p>
+          </div>
+          <div class="step-arrow" aria-hidden="true">
+            <svg viewBox="0 0 16 16" fill="none"><path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="step">
+            <div class="step-num">02</div>
+            <h4>Intelligence</h4>
+            <p>We identify patterns, pressures and emerging replacement requirements.</p>
+          </div>
+          <div class="step-arrow" aria-hidden="true">
+            <svg viewBox="0 0 16 16" fill="none"><path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="step">
+            <div class="step-num">03</div>
+            <h4>Executive clarity</h4>
+            <p>We turn them into a view leadership can use for planning and decision-making.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="final-cta" id="finalCta">
+        <h3>See What Your Estate Data Could Reveal</h3>
+        <p>Your Estate Intelligence Check is only the starting point. If you&rsquo;d like to see what a deeper review could reveal about your organisation, we&rsquo;ll show you how.</p>
+        <div class="cta-row">
+          <button class="btn btn-primary" id="exploreBtn" type="button">Explore My Estate Intelligence</button>
+          <button class="btn btn-ghost" id="laterBtn" type="button">I&rsquo;ll Review This Later</button>
+        </div>
+      </div>
+
+      <div class="stage-foot-space"></div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ============================================================
+     CONTENT — questions, per-sector wording, scoring
+     ============================================================ */
+  var OPTS_STANDARD = ["Very confident","Reasonably confident","Somewhat outdated","Significantly out of date","I'm not sure"];
+
+  var QUESTIONS = [
+    {
+      id:"q1", dim:"assetVisibility", dimLabel:"Asset Visibility",
+      edu:"How are your school's or trust's asset and equipment records currently held?",
+      care:"How are your care group's or setting's asset and equipment records currently held?",
+      options:["A single system, actively maintained","A spreadsheet or register, updated periodically","Spread across several people or departments","Mostly memory, paper files or informal notes","I genuinely don't know"]
+    },
+    {
+      id:"q2", dim:"replacementVisibility", dimLabel:"Replacement Visibility",
+      edu:"When major replacement costs appear in the budget, how often are they genuinely unexpected?",
+      care:"When major replacement costs appear in the budget, how often are they genuinely unexpected?",
+      options:["Rarely &mdash; we usually see them coming","Occasionally","Quite often","We don't currently forecast them","I'm not sure"]
+    },
+    {
+      id:"q3", dim:"financialForesight", dimLabel:"Financial Foresight",
+      edu:"Does your trust hold a multi-year forecast of likely capital and replacement costs?",
+      care:"Does your organisation hold a multi-year forecast of likely capital and replacement costs?",
+      options:["Yes, and it's regularly reviewed","Yes, but it's rarely updated","Only for specific projects","No &mdash; we work year to year","I'm not sure"]
+    },
+    {
+      id:"q4", dim:"financialForesight", dimLabel:"Financial Foresight",
+      edu:"How confident are you that this year's budget reflects the true condition and age of your estate?",
+      care:"How confident are you that this year's budget reflects the true condition and age of your estate?",
+      options:["Very confident","Reasonably confident","Not entirely","Not confident at all","I'm not sure"]
+    },
+    {
+      id:"q5", dim:"riskVisibility", dimLabel:"Risk Visibility",
+      edu:"If a major system failed tomorrow &mdash; a roof, a boiler, a heating system &mdash; how prepared is your trust to fund the replacement?",
+      care:"If a major system failed tomorrow &mdash; a boiler, a hoist, a passenger lift &mdash; how prepared is your organisation to fund the replacement?",
+      options:["Fully prepared &mdash; it's budgeted for","Reasonably prepared","We'd find a way","We would struggle","I'm not sure"]
+    }
+  ];
+
+  var MICRO_COPY = { 1:"Interesting.", 2:"That's more common than you might think.", 3:"One more question." };
+
+  var ORG_TYPES = {
+    education:["Multi-Academy Trust","Single Academy Trust","Local authority school","Independent school","Sixth form / college","Other"],
+    care:["Care group (multiple settings)","Single care home","Supported living provider","Domiciliary / home care","Other"]
+  };
+
+  var INSIGHTS = {
+    assetVisibility:{
+      label:"What you own",
+      title:"Asset visibility",
+      body:[
+        "You have more visibility of the numbers around your estate than of the estate itself. Records exist, but they don't always reflect what's really in use, where it is, or what condition it's in.",
+        "That's a common starting point &mdash; and it means everything built on top of those records, budgets, replacement plans, insured values, inherits the same uncertainty."
+      ]
+    },
+    replacementVisibility:{
+      label:"Replacement forecasting",
+      title:"Replacement forecasting",
+      body:[
+        "You appear to have reasonable visibility of what you own, but less visibility of what is likely to require replacement, and when.",
+        "That matters because replacement pressure rarely arrives suddenly. It builds quietly in the background &mdash; until it becomes a budget problem."
+      ]
+    },
+    financialForesight:{
+      label:"Financial foresight",
+      title:"Financial foresight",
+      body:[
+        "You can likely account for what you own and, to some degree, its condition. What's less visible is how that translates into pounds &mdash; this year, next year, and the year after.",
+        "Without that translation, capital planning tends to happen in reaction to failures rather than ahead of them."
+      ]
+    },
+    riskVisibility:{
+      label:"Risk exposure",
+      title:"Risk exposure",
+      body:[
+        "Your day-to-day view of the estate looks reasonably solid. Where visibility thins out is around exposure &mdash; what an unplanned failure would actually cost you, and how ready your organisation is to fund it at short notice.",
+        "That's often the gap that only becomes visible at the worst possible moment: a boiler, a roof, a lift &mdash; the failure nobody had budgeted for."
+      ]
+    }
+  };
+
+  var DIM_ORDER = ["assetVisibility","replacementVisibility","financialForesight","riskVisibility"];
+  var WEAKEST_PRIORITY = ["financialForesight","replacementVisibility","riskVisibility","assetVisibility"];
+
+  function scoreBand(overall){
+    if(overall>=80) return { h:"Your estate intelligence is strong.", s:"You have real visibility across ownership, condition and future cost — rarer than you might think." };
+    if(overall>=60) return { h:"Your estate is visible.", s:"Your future pressure isn't — yet." };
+    if(overall>=40) return { h:"You know what you own.", s:"What it's going to cost you is far less clear." };
+    return { h:"Right now, most of what matters is still invisible.", s:"Not because the information doesn't exist — because nobody's had a reason to join it up yet." };
+  }
+
+  /* ============================================================
+     STATE
+     ============================================================ */
+  var state = { sector:null, answers:new Array(QUESTIONS.length).fill(-1), qIndex:0, leadId:null, lead:null, scores:null };
+  var reducedMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  var campaignParams = (function(){
+    var p = new URLSearchParams(window.location.search);
+    var keys = ["utm_source","utm_medium","utm_campaign","utm_content","utm_term","source","campaign"];
+    var out = {};
+    keys.forEach(function(k){ if(p.has(k)) out[k]=p.get(k); });
+    return out;
+  })();
+
+  /* ============================================================
+     STAGE — this is the whole page, so it initialises straight
+     into the sector panel. No welcome screen, no open/close.
+     ============================================================ */
+  var stageBody = document.getElementById("stageBody");
+  var headerProgress = document.getElementById("headerProgress");
+  var hpText = document.getElementById("hpText");
+  var stageProgress = document.getElementById("stageProgress");
+
+  function resetQuiz(){
+    state = { sector:null, answers:new Array(QUESTIONS.length).fill(-1), qIndex:0, leadId:null, lead:null, scores:null };
+    stageProgress.style.width = "0%";
+  }
+
+  function showPanel(name){
+    document.querySelectorAll(".panel").forEach(function(p){
+      p.hidden = p.getAttribute("data-panel") !== name;
+    });
+    stageBody.scrollTop = 0;
+    if(name === "question"){
+      headerProgress.classList.add("show");
+      stageProgress.style.width = (state.qIndex/QUESTIONS.length*100) + "%";
+    } else if(name === "result"){
+      headerProgress.classList.remove("show");
+      stageProgress.style.width = "100%";
+    } else {
+      headerProgress.classList.remove("show");
+      stageProgress.style.width = name === "lead" ? "100%" : "0%";
+    }
+  }
+
+  /* ============================================================
+     SECTOR
+     ============================================================ */
+  document.querySelectorAll(".sector-card").forEach(function(card){
+    card.addEventListener("click", function(){
+      state.sector = card.getAttribute("data-sector");
+      state.qIndex = 0;
+      renderQuestion();
+      showPanel("question");
+    });
+  });
+
+  /* Land straight on "Before we begin" — no welcome page to click through first. */
+  resetQuiz();
+  showPanel("sector");
+
+  /* ============================================================
+     QUESTIONS
+     ============================================================ */
+  var qText = document.getElementById("qText");
+  var qOptions = document.getElementById("qOptions");
+  var qDimLabel = document.getElementById("qDimLabel");
+  var microCopy = document.getElementById("microCopy");
+  var qBackBtn = document.getElementById("qBackBtn");
+
+  function renderQuestion(){
+    var q = QUESTIONS[state.qIndex];
+    qText.innerHTML = state.sector === "care" ? q.care : q.edu;
+    qDimLabel.textContent = q.dimLabel.toUpperCase();
+    hpText.innerHTML = pad(state.qIndex+1) + " / " + pad(QUESTIONS.length);
+    qOptions.innerHTML = "";
+    q.options.forEach(function(optText, i){
+      var btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "option" + (state.answers[state.qIndex] === i ? " selected" : "");
+      btn.innerHTML = '<span class="opt-dot"></span><span>' + optText + "</span>";
+      btn.addEventListener("click", function(){ selectOption(i); });
+      qOptions.appendChild(btn);
+    });
+    qBackBtn.style.visibility = state.qIndex === 0 ? "hidden" : "visible";
+    microCopy.classList.remove("show");
+    microCopy.textContent = "";
+    stageProgress.style.width = (state.qIndex/QUESTIONS.length*100) + "%";
+  }
+
+  function selectOption(i){
+    state.answers[state.qIndex] = i;
+    Array.prototype.forEach.call(qOptions.children, function(el, idx){
+      el.classList.toggle("selected", idx === i);
+    });
+    var msg = MICRO_COPY[state.qIndex];
+    if(msg){ microCopy.textContent = msg; microCopy.classList.add("show"); }
+
+    setTimeout(function(){
+      if(state.qIndex < QUESTIONS.length - 1){
+        state.qIndex++;
+        renderQuestion();
+      } else {
+        renderLeadForm();
+        showPanel("lead");
+      }
+    }, reducedMotion ? 60 : 420);
+  }
+
+  qBackBtn.addEventListener("click", function(){
+    if(state.qIndex > 0){ state.qIndex--; renderQuestion(); }
+  });
+
+  function pad(n){ return n < 10 ? "0"+n : ""+n; }
+
+  /* ============================================================
+     LEAD FORM
+     ============================================================ */
+  var leadForm = document.getElementById("leadForm");
+  var fOrgType = document.getElementById("fOrgType");
+  var fOrgTypeLabel = document.getElementById("fOrgTypeLabel");
+
+  function renderLeadForm(){
+    var types = ORG_TYPES[state.sector] || ORG_TYPES.education;
+    fOrgType.innerHTML = "";
+    types.forEach(function(t){
+      var o = document.createElement("option");
+      o.value = t; o.textContent = t;
+      fOrgType.appendChild(o);
+    });
+    fOrgTypeLabel.textContent = state.sector === "care" ? "Organisation type" : "Trust / organisation type";
+  }
+
+  leadForm.addEventListener("submit", function(e){
+    e.preventDefault();
+    if(!leadForm.checkValidity()){ leadForm.reportValidity(); return; }
+
+    var fd = new FormData(leadForm);
+    state.lead = {
+      firstName: fd.get("firstName"), lastName: fd.get("lastName"),
+      organisation: fd.get("organisation"), jobTitle: fd.get("jobTitle") || "",
+      orgType: fd.get("orgType"), email: fd.get("email"), phone: fd.get("phone") || ""
+    };
+    state.scores = computeScores();
+    state.leadId = genId();
+
+    submitLead("reveal");
+    renderResult();
+    showPanel("result");
+  });
+
+  /* ============================================================
+     SCORING
+     ============================================================ */
+  function computeScores(){
+    var dimPoints = { assetVisibility:0, replacementVisibility:0, financialForesight:0, riskVisibility:0 };
+    var dimMax = { assetVisibility:0, replacementVisibility:0, financialForesight:0, riskVisibility:0 };
+    var totalPoints = 0, totalMax = 0;
+
+    QUESTIONS.forEach(function(q, i){
+      var idx = state.answers[i];
+      var pts = idx >= 0 ? (4 - idx) : 0;
+      dimPoints[q.dim] += pts; dimMax[q.dim] += 4;
+      totalPoints += pts; totalMax += 4;
+    });
+
+    var dims = {};
+    DIM_ORDER.forEach(function(d){ dims[d] = Math.round(dimPoints[d] / dimMax[d] * 100); });
+    var overall = Math.round(totalPoints / totalMax * 100);
+
+    var weakest = WEAKEST_PRIORITY[0], minVal = Infinity;
+    WEAKEST_PRIORITY.forEach(function(d){ if(dims[d] < minVal){ minVal = dims[d]; weakest = d; } });
+
+    return { overall:overall, dims:dims, weakest:weakest };
+  }
+
+  /* ============================================================
+     RESULT RENDER
+     ============================================================ */
+  var scoreNum = document.getElementById("scoreNum");
+  var scoreHeadline = document.getElementById("scoreHeadline");
+  var scoreSub = document.getElementById("scoreSub");
+  var dimsGrid = document.getElementById("dimsGrid");
+  var insightTitle = document.getElementById("insightTitle");
+  var insightBody = document.getElementById("insightBody");
+
+  var DIM_LABELS = { assetVisibility:"Asset Visibility", replacementVisibility:"Replacement Visibility", financialForesight:"Financial Foresight", riskVisibility:"Risk Visibility" };
+
+  function renderResult(){
+    var s = state.scores;
+    var band = scoreBand(s.overall);
+    scoreHeadline.textContent = band.h;
+    scoreSub.textContent = band.s;
+
+    animateNumber(scoreNum, s.overall, reducedMotion ? 0 : 1000);
+
+    dimsGrid.innerHTML = "";
+    DIM_ORDER.forEach(function(d){
+      var card = document.createElement("div");
+      card.className = "dim-card" + (d === s.weakest ? " weak" : "");
+      card.innerHTML =
+        '<div class="dim-label">' + DIM_LABELS[d] + '</div>' +
+        '<div class="dim-pct">' + s.dims[d] + '%</div>' +
+        '<div class="dim-bar"><i style="width:0%"></i></div>';
+      dimsGrid.appendChild(card);
+      var bar = card.querySelector(".dim-bar i");
+      requestAnimationFrame(function(){ setTimeout(function(){ bar.style.width = s.dims[d] + "%"; }, 30); });
+    });
+
+    var ins = INSIGHTS[s.weakest];
+    insightTitle.textContent = ins.title;
+    insightBody.innerHTML = ins.body.map(function(p){ return "<p>"+p+"</p>"; }).join("");
+
+    var finalCta = document.getElementById("finalCta");
+    finalCta.innerHTML =
+      '<h3>See What Your Estate Data Could Reveal</h3>' +
+      '<p>Your Estate Intelligence Check is only the starting point. If you’d like to see what a deeper review could reveal about your organisation, we’ll show you how.</p>' +
+      '<div class="cta-row">' +
+        '<button class="btn btn-primary" id="exploreBtn" type="button">Explore My Estate Intelligence</button>' +
+        '<button class="btn btn-ghost" id="laterBtn" type="button">I’ll Review This Later</button>' +
+      '</div>';
+
+    document.getElementById("exploreBtn").addEventListener("click", function(){
+      submitLead("explore");
+      finalCta.innerHTML =
+        '<h3>See What Your Estate Data Could Reveal</h3>' +
+        '<p class="cta-confirm">Noted &mdash; thank you. We’ll follow up personally, using what you’ve just told us, within one working day.</p>';
+    });
+    document.getElementById("laterBtn").addEventListener("click", function(){
+      submitLead("later");
+      finalCta.innerHTML =
+        '<h3>See What Your Estate Data Could Reveal</h3>' +
+        '<p class="cta-confirm">No problem — thank you for taking the Check. Your result has been noted, and we’ll be here when you’re ready.</p>';
+    });
+  }
+
+  function animateNumber(el, target, duration){
+    if(!duration){ el.textContent = target; return; }
+    var start = 0, startTime = null;
+    function step(ts){
+      if(!startTime) startTime = ts;
+      var progress = Math.min((ts - startTime) / duration, 1);
+      var eased = 1 - Math.pow(1-progress, 3);
+      el.textContent = Math.round(start + (target-start) * eased);
+      if(progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  /* ============================================================
+     LEAD SUBMISSION
+     ============================================================ */
+  function genId(){
+    if(window.crypto && crypto.randomUUID) return crypto.randomUUID();
+    return "lead-" + Date.now() + "-" + Math.random().toString(16).slice(2);
+  }
+
+  function submitLead(eventType){
+    var q = QUESTIONS.map(function(qq, i){
+      var idx = state.answers[i];
+      return { id:qq.id, dimension:qq.dim, answerIndex:idx, answerText: idx>=0 ? qq.options[idx] : null };
+    });
+
+    var payload = {
+      event: eventType,
+      leadId: state.leadId,
+      timestamp: new Date().toISOString(),
+      sector: state.sector,
+      lead: state.lead,
+      scores: state.scores,
+      answers: q,
+      primaryConcern: state.scores ? DIM_LABELS[state.scores.weakest] : null,
+      campaign: campaignParams,
+      page: {
+        variant: "estate-intelligence-check-v1",
+        url: window.location.href,
+        referrer: document.referrer || null
+      }
+    };
+
+    fetch("/api/submit-lead", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload)
+    }).catch(function(err){
+      // Expected in local preview or before the /api/submit-lead route is deployed.
+      console.warn("Estate Intelligence Check: lead submit did not reach the backend.", err);
+    });
+  }
+
+})();
+</script>
+
+</body>
+</html>
