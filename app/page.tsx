@@ -38,46 +38,34 @@ export default function Page() {
 
 function Header() {
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-white/[0.06] bg-black/45 px-6 py-5 backdrop-blur-xl md:px-12">
-      <div className="mx-auto flex max-w-[1600px] items-center justify-between">
-        <a href="#top" className="text-xs font-medium tracking-[0.62em] text-white/88">
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-white/[0.09] bg-black/70 px-5 py-4 backdrop-blur-xl md:px-12">
+      <div className="mx-auto flex max-w-[1600px] items-center justify-between gap-6">
+        <a href="#top" className="shrink-0 text-sm font-semibold tracking-[0.48em] text-white">
           PRISM
         </a>
 
-        <nav className="hidden items-center gap-9 text-[0.78rem] text-white/60 md:flex">
-          <a href="#why" className="transition hover:text-white">
-            Why Prism
+        <nav aria-label="Main navigation" className="hidden items-center gap-7 text-[0.94rem] font-medium text-white/80 md:flex">
+          <a href="#why" className="transition hover:text-white">Why Prism</a>
+          <a href="#how" className="transition hover:text-white">How it works</a>
+          <a href="#review" className="transition hover:text-white">The Review</a>
+          <a href="#testimonials" className="transition hover:text-white">Testimonials</a>
+          <a href="tel:+442038741866" className="hidden text-sm tracking-[0.04em] text-white/80 transition hover:text-white lg:inline-block">
+            0203 874 1866
           </a>
-
-          <a href="#how" className="transition hover:text-white">
-            How it works
+          <a href={reviewEmail} className="whitespace-nowrap border border-[#d7c7a2]/65 bg-[#d7c7a2]/[0.08] px-5 py-3 text-sm font-medium text-white transition hover:border-[#d7c7a2] hover:bg-[#d7c7a2] hover:text-black">
+            Request an Executive Review →
           </a>
-
-          <a href="#review" className="transition hover:text-white">
-            The Review
-          </a>
-
-          <a href="#testimonials" className="transition hover:text-white">
-            Testimonials
-          </a>
-
-          <div className="flex items-center gap-6">
-            <a
-              href="tel:+442038741866"
-              className="hidden text-sm tracking-[0.08em] text-white/70 transition hover:text-white lg:inline-block"
-            >
-              0203 874 1866
-            </a>
-
-            <a
-              href={reviewEmail}
-              className="border border-white/18 px-5 py-3 text-white/90 transition hover:border-white/50 hover:bg-white hover:text-black"
-            >
-              Request an Executive Review →
-            </a>
-          </div>
         </nav>
+        <a href={reviewEmail} className="whitespace-nowrap border border-[#d7c7a2]/65 bg-[#d7c7a2]/[0.08] px-3 py-2.5 text-xs font-medium text-white transition hover:bg-[#d7c7a2] hover:text-black md:hidden">
+          Request a Review →
+        </a>
       </div>
+      <nav aria-label="Mobile navigation" className="mx-auto mt-4 flex max-w-[1600px] gap-7 overflow-x-auto whitespace-nowrap pb-1 text-sm font-medium text-white/80 md:hidden">
+        <a href="#why" className="transition hover:text-white">Why Prism</a>
+        <a href="#how" className="transition hover:text-white">How it works</a>
+        <a href="#review" className="transition hover:text-white">The Review</a>
+        <a href="#testimonials" className="transition hover:text-white">Testimonials</a>
+      </nav>
     </header>
   )
 }
@@ -131,7 +119,7 @@ function Information() {
       <div className="absolute right-0 top-0 h-full w-2/3 opacity-50 [background:radial-gradient(circle_at_80%_45%,rgba(255,255,255,.06),transparent_34%)]" />
       <div className="mx-auto grid max-w-[1500px] gap-14 md:grid-cols-[0.9fr_1.1fr] md:items-center">
         <div>
-          <p className="mb-8 text-xs uppercase tracking-[0.42em] text-[#d7c7a2]">01 · Information is not the problem</p>
+          <p className="mb-8 text-sm uppercase tracking-[0.28em] text-[#d7c7a2]">01 · Information is not the problem</p>
           <h2 className="font-serif text-5xl font-light leading-[1.02] tracking-[-0.045em] text-white text-balance md:text-7xl">
             Most organisations don’t suffer from a lack of information.
           </h2>
@@ -157,7 +145,7 @@ function Mechanism() {
       <img src="/horizon.png" alt="" className="absolute inset-0 h-full w-full object-cover opacity-20 mix-blend-screen" />
       <div className="absolute inset-0 bg-gradient-to-r from-black via-black/75 to-black/35" />
       <div className="relative mx-auto max-w-[1500px]">
-        <p className="mb-8 text-xs uppercase tracking-[0.42em] text-[#d7c7a2]">02 · The method</p>
+        <p className="mb-8 text-sm uppercase tracking-[0.28em] text-[#d7c7a2]">02 · The method</p>
         <h2 className="max-w-5xl font-serif text-5xl font-light leading-[1.03] tracking-[-0.045em] text-white text-balance md:text-7xl">
           We never visit. We never install anything.
         </h2>
@@ -169,14 +157,14 @@ function Mechanism() {
         </p>
         <div className="mt-14 flex flex-wrap gap-x-10 gap-y-5 border-t border-white/[0.1] pt-8">
           {['One engagement', 'No site visits', 'No contracts', 'No tie-ins'].map((item) => (
-            <span key={item} className="text-xs uppercase tracking-[0.38em] text-[#d7c7a2]/90">
+            <span key={item} className="text-sm uppercase tracking-[0.28em] text-[#d7c7a2]/90">
               {item}
             </span>
           ))}
         </div>
         <div className="mt-8 flex flex-wrap gap-x-8 gap-y-5">
           {disciplines.map((item) => (
-            <span key={item} className="text-xs uppercase tracking-[0.38em] text-white/45">
+            <span key={item} className="text-sm uppercase tracking-[0.28em] text-white/45">
               {item}
             </span>
           ))}
@@ -191,7 +179,7 @@ function Finding() {
     <section className="relative overflow-hidden border-b border-white/[0.08] bg-black px-6 py-28 md:px-12 md:py-44">
       <div className="absolute inset-0 opacity-50 [background:radial-gradient(circle_at_30%_40%,rgba(215,199,162,.10),transparent_38%)]" />
       <div className="relative mx-auto max-w-[1500px]">
-        <p className="mb-10 text-xs uppercase tracking-[0.42em] text-[#d7c7a2]">03 · What gets revealed</p>
+        <p className="mb-10 text-sm uppercase tracking-[0.28em] text-[#d7c7a2]">03 · What gets revealed</p>
         <blockquote className="max-w-5xl font-serif text-5xl font-light leading-[1.04] tracking-[-0.045em] text-white text-balance md:text-7xl">
           One organisation was still insuring equipment that had been disposed of three years earlier.
         </blockquote>
@@ -200,13 +188,13 @@ function Finding() {
         </p>
         <div className="mt-14 grid gap-px border border-white/[0.1] bg-white/[0.08] md:grid-cols-2">
           <div className="bg-black p-8 md:p-10">
-            <p className="text-xs uppercase tracking-[0.32em] text-[#d7c7a2]/85">For trusts</p>
+            <p className="text-sm uppercase tracking-[0.24em] text-[#d7c7a2]/85">For trusts</p>
             <p className="mt-6 text-lg leading-relaxed text-white/75">
               Every trust must account for its estate in the autumn 2026 annual return. The question it asks is the one this page asks: do you actually know what you hold?
             </p>
           </div>
           <div className="bg-black p-8 md:p-10">
-            <p className="text-xs uppercase tracking-[0.32em] text-[#d7c7a2]/85">For care groups</p>
+            <p className="text-sm uppercase tracking-[0.24em] text-[#d7c7a2]/85">For care groups</p>
             <p className="mt-6 text-lg leading-relaxed text-white/75">
               CQC will find what your records already show. The only question is whether you see it before they do.
             </p>
@@ -222,7 +210,7 @@ function Behaviour() {
     <section className="border-b border-white/[0.08] bg-black px-6 py-28 md:px-12 md:py-40">
       <div className="mx-auto grid max-w-[1500px] gap-16 md:grid-cols-[0.95fr_1.05fr] md:items-start">
         <div>
-          <p className="mb-8 text-xs uppercase tracking-[0.42em] text-[#d7c7a2]">04 · Behaviour changes decisions</p>
+          <p className="mb-8 text-sm uppercase tracking-[0.28em] text-[#d7c7a2]">04 · Behaviour changes decisions</p>
           <h2 className="font-serif text-5xl font-light leading-[1.03] tracking-[-0.045em] text-white text-balance md:text-7xl">
             Leadership rarely fails because information is unavailable.
           </h2>
@@ -237,8 +225,8 @@ function Behaviour() {
           {biases.map((item) => (
             <article key={item.title} className="bg-black p-8 md:min-h-[310px]">
               <div className="mb-12 h-10 w-10 rounded-full border border-[#d7c7a2]/60" />
-              <h3 className="max-w-[12rem] text-xs uppercase tracking-[0.32em] text-white">{item.title}</h3>
-              <p className="mt-8 text-sm leading-relaxed text-white/68">{item.body}</p>
+              <h3 className="max-w-[12rem] text-sm uppercase tracking-[0.24em] text-white">{item.title}</h3>
+              <p className="mt-8 text-base leading-relaxed text-white/75">{item.body}</p>
             </article>
           ))}
         </div>
@@ -253,7 +241,7 @@ function EstateIntelligence() {
       <div className="absolute right-0 top-0 h-full w-1/2 opacity-40 [background:radial-gradient(circle_at_85%_50%,rgba(215,199,162,.18),transparent_40%)]" />
       <div className="relative mx-auto grid max-w-[1500px] gap-16 md:grid-cols-[0.92fr_1.08fr] md:items-center">
         <div>
-          <p className="mb-8 text-xs uppercase tracking-[0.42em] text-[#d7c7a2]">05 · Estate Intelligence</p>
+          <p className="mb-8 text-sm uppercase tracking-[0.28em] text-[#d7c7a2]">05 · Estate Intelligence</p>
           <h2 className="font-serif text-5xl font-light leading-[1.03] tracking-[-0.045em] text-white text-balance md:text-7xl">
             Your estate is where invisible risk costs the most.
           </h2>
@@ -290,7 +278,7 @@ function Review() {
 
       <div className="relative mx-auto grid max-w-[1500px] gap-16 md:grid-cols-[0.82fr_1.18fr] md:items-center">
         <div>
-          <p className="mb-8 text-xs uppercase tracking-[0.42em] text-[#d7c7a2]">
+          <p className="mb-8 text-sm uppercase tracking-[0.28em] text-[#d7c7a2]">
             06 · From complexity to clarity
           </p>
 
@@ -389,7 +377,7 @@ function Review() {
               </div>
             </div>
 
-            <p className="mt-7 max-w-sm text-sm leading-relaxed text-white/68">
+            <p className="mt-7 max-w-sm text-base leading-relaxed text-white/75">
               Condition, compliance and financial pressure resolved into one clear leadership view.
             </p>
 
@@ -442,7 +430,7 @@ function HowItWorks() {
       <div className="absolute left-0 top-0 h-full w-1/2 opacity-40 [background:radial-gradient(circle_at_15%_50%,rgba(215,199,162,.14),transparent_40%)]" />
       <div className="relative mx-auto grid max-w-[1500px] gap-16 md:grid-cols-[1.05fr_0.95fr] md:items-center">
         <div>
-          <p className="mb-8 text-xs uppercase tracking-[0.42em] text-[#d7c7a2]">07 · What happens when you write</p>
+          <p className="mb-8 text-sm uppercase tracking-[0.28em] text-[#d7c7a2]">07 · What happens when you write</p>
           <h2 className="font-serif text-5xl font-light leading-[1.02] tracking-[-0.045em] text-white text-balance md:text-6xl">
             Your cost is an email and a few exports. That’s all.
           </h2>
@@ -453,14 +441,14 @@ function HowItWorks() {
               ['You receive the Review', 'A board-ready document. No meetings required until you’ve read it.'],
             ].map(([title, body]) => (
               <div key={title}>
-                <h3 className="text-xs uppercase tracking-[0.32em] text-[#d7c7a2]">{title}</h3>
+                <h3 className="text-sm uppercase tracking-[0.24em] text-[#d7c7a2]">{title}</h3>
                 <p className="mt-3 max-w-md text-lg leading-relaxed text-white/72">{body}</p>
               </div>
             ))}
           </div>
         </div>
         <div className="border border-white/[0.1] bg-white/[0.03] p-9 md:p-12">
-          <p className="text-xs uppercase tracking-[0.38em] text-white/50">
+          <p className="text-sm uppercase tracking-[0.28em] text-white/50">
   The Reviews
 </p>
 
@@ -477,7 +465,7 @@ function HowItWorks() {
 </p>
           <div className="mt-12 grid gap-5 lg:grid-cols-2">
   <div className="border border-white/12 bg-black/35 p-7 md:p-8">
-    <p className="text-[0.65rem] uppercase tracking-[0.3em] text-[#d7c7a2]">For individual schools</p>
+    <p className="text-sm uppercase tracking-[0.22em] text-[#d7c7a2]">For individual schools</p>
     <h3 className="mt-4 font-serif text-3xl font-light text-white md:text-4xl">Primary School Review</h3>
     <p className="mt-4 min-h-[5.5rem] text-base leading-relaxed text-white/70">
       A focused review of one school's asset information, highlighting financial exposure, audit readiness, replacement priorities and the decisions that need attention.
@@ -488,7 +476,7 @@ function HowItWorks() {
     </a>
   </div>
   <div className="border border-white/12 bg-black/35 p-7 md:p-8">
-    <p className="text-[0.65rem] uppercase tracking-[0.3em] text-[#d7c7a2]">For multi-academy trusts</p>
+    <p className="text-sm uppercase tracking-[0.22em] text-[#d7c7a2]">For multi-academy trusts</p>
     <h3 className="mt-4 font-serif text-3xl font-light text-white md:text-4xl">Trust-Wide Review</h3>
     <p className="mt-4 min-h-[5.5rem] text-base leading-relaxed text-white/70">
       A consolidated view across schools, revealing portfolio-wide patterns, inconsistencies between registers, replacement pressure and strategic priorities for the trust.
@@ -540,7 +528,7 @@ function Testimonials() {
     <section id="testimonials" className="relative overflow-hidden border-b border-white/[0.08] bg-[#050505] px-6 py-28 md:px-12 md:py-40">
       <div className="absolute right-0 top-0 h-full w-2/3 opacity-40 [background:radial-gradient(circle_at_80%_35%,rgba(215,199,162,.12),transparent_38%)]" />
       <div className="relative mx-auto max-w-[1500px]">
-        <p className="mb-8 text-xs uppercase tracking-[0.42em] text-[#d7c7a2]">08 · Trusted by schools</p>
+        <p className="mb-8 text-sm uppercase tracking-[0.28em] text-[#d7c7a2]">08 · Trusted by schools</p>
         <div className="mb-16 grid gap-10 md:grid-cols-[0.8fr_1.2fr] md:items-end">
           <h2 className="font-serif text-5xl font-light leading-[1.03] tracking-[-0.045em] text-white text-balance md:text-7xl">
             Good decisions begin with better visibility.
@@ -562,7 +550,7 @@ function Testimonials() {
               </div>
               <div className="mt-10 border-t border-white/[0.1] pt-5">
                 <p className="text-sm text-white">{item.name}</p>
-                <p className="mt-1 text-xs uppercase tracking-[0.2em] text-white/45">{item.school}</p>
+                <p className="mt-1 text-sm uppercase tracking-[0.16em] text-white/45">{item.school}</p>
               </div>
             </article>
           ))}
@@ -592,7 +580,7 @@ function FinalCTA() {
         >
           Request an Executive Review <span aria-hidden="true">→</span>
         </a>
-        <p className="mt-6 text-[0.68rem] uppercase tracking-[0.3em] text-white/45">
+        <p className="mt-6 text-sm uppercase tracking-[0.22em] text-white/45">
           One engagement · No site visit · No contract · No tie-in
         </p>
       </div>
