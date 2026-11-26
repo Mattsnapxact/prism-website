@@ -95,7 +95,7 @@ function Hero() {
       <div className="relative z-10 mx-auto flex min-h-[calc(100vh-7rem)] max-w-[1600px] items-center">
         <div className="max-w-5xl pb-12">
           <p className="mb-8 text-xs uppercase tracking-[0.48em] text-white/50">
-            For the leadership of Multi-Academy Trusts and care groups
+            For the leadership of Schools, Multi-Academy Trusts and care groups
           </p>
           <h1 className="max-w-5xl font-serif text-[4.3rem] font-light leading-[0.92] tracking-[-0.06em] text-white text-balance sm:text-8xl lg:text-[8.4rem]">
             You already have
