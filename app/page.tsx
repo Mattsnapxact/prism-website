@@ -30,6 +30,7 @@ export default function Page() {
       <EstateIntelligence />
       <Review />
       <HowItWorks />
+      <Testimonials />
       <FinalCTA />
     </main>
   )
@@ -54,6 +55,10 @@ function Header() {
 
           <a href="#review" className="transition hover:text-white">
             The Review
+          </a>
+
+          <a href="#testimonials" className="transition hover:text-white">
+            Testimonials
           </a>
 
           <div className="flex items-center gap-6">
@@ -497,6 +502,68 @@ function HowItWorks() {
   )
 }
 
+
+function Testimonials() {
+  const testimonials = [
+    {
+      name: 'Eleanor Wybourn',
+      school: 'Mellor Primary School',
+      text: 'Eleanor found the report invaluable for forward planning. It was also useful in preparation for an imminent audit, where the auditors were most complimentary.',
+      featured: true,
+    },
+    {
+      name: 'Bridget Richards',
+      school: 'Trelawnyd Primary School',
+      text: "Great tool and a great price. I would be amazed if other schools don't see the value in it.",
+    },
+    {
+      name: 'Tracey Morrison',
+      school: 'Vernon Park Primary School',
+      text: 'We have been using Prism for our Asset Checks for a number of years now. We have always been impressed with their professionalism and service.',
+    },
+    {
+      name: 'Tracie Smith',
+      school: 'Monks Walk School',
+      text: 'Professional, Prompt and provide a service that we could not carry out in house. Excellent reporting that is invaluable in relation to budgeting and forward planning. Key for all in education management!',
+    },
+  ]
+
+  return (
+    <section id="testimonials" className="relative overflow-hidden border-b border-white/[0.08] bg-[#050505] px-6 py-28 md:px-12 md:py-40">
+      <div className="absolute right-0 top-0 h-full w-2/3 opacity-40 [background:radial-gradient(circle_at_80%_35%,rgba(215,199,162,.12),transparent_38%)]" />
+      <div className="relative mx-auto max-w-[1500px]">
+        <p className="mb-8 text-xs uppercase tracking-[0.42em] text-[#d7c7a2]">08 · Trusted by schools</p>
+        <div className="mb-16 grid gap-10 md:grid-cols-[0.8fr_1.2fr] md:items-end">
+          <h2 className="font-serif text-5xl font-light leading-[1.03] tracking-[-0.045em] text-white text-balance md:text-7xl">
+            Good decisions begin with better visibility.
+          </h2>
+          <p className="max-w-2xl text-lg leading-relaxed text-white/65 md:justify-self-end">
+            Schools use Prism to bring greater clarity to asset information, audit preparation, budgeting and forward planning. Here is what some of them have told us.
+          </p>
+        </div>
+        <div className="grid gap-px border border-white/[0.1] bg-white/[0.1] md:grid-cols-2">
+          {testimonials.map((item, index) => (
+            <article key={item.school} className="flex min-h-[270px] flex-col justify-between bg-[#080808] p-8 md:p-10">
+              <div>
+                <p className="mb-8 font-serif text-3xl font-light leading-tight tracking-[-0.025em] text-[#d7c7a2]">
+                  {index === 0 ? 'Invaluable for forward planning and audit preparation.' : '“' + item.text + '”'}
+                </p>
+                {index === 0 && (
+                  <p className="max-w-xl text-base leading-relaxed text-white/75">{item.text}</p>
+                )}
+              </div>
+              <div className="mt-10 border-t border-white/[0.1] pt-5">
+                <p className="text-sm text-white">{item.name}</p>
+                <p className="mt-1 text-xs uppercase tracking-[0.2em] text-white/45">{item.school}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
 function FinalCTA() {
   return (
     <section className="relative overflow-hidden bg-[#030303] px-6 py-28 text-center md:px-12 md:py-44">
@@ -521,9 +588,24 @@ function FinalCTA() {
           One engagement · No site visit · No contract · No tie-in
         </p>
       </div>
-      <footer className="relative mx-auto mt-28 flex max-w-[1500px] items-center justify-between border-t border-white/[0.08] pt-8 text-xs text-white/38">
-        <span className="tracking-[0.55em]">PRISM</span>
-        <span>Executive Visibility</span>
+      <footer className="relative mx-auto mt-28 grid max-w-[1500px] gap-8 border-t border-white/[0.08] pt-8 text-xs text-white/45 md:grid-cols-[1fr_1fr_1fr] md:items-start">
+        <div>
+          <span className="tracking-[0.55em] text-white/70">PRISM</span>
+          <p className="mt-3">Executive Visibility</p>
+        </div>
+        <address className="not-italic leading-relaxed">
+          <span className="mb-2 block uppercase tracking-[0.22em] text-white/65">Registered contact address</span>
+          Remembrance Way<br />
+          Macclesfield<br />
+          SK10 1LF
+        </address>
+        <div className="leading-relaxed md:text-right">
+          <a href="mailto:matthew@prismgroup.uk" className="transition hover:text-[#d7c7a2]">matthew@prismgroup.uk</a>
+          <br />
+          <a href="tel:+442038741866" className="transition hover:text-[#d7c7a2]">0203 874 1866</a>
+          <br />
+          <a href="https://prismgroup.uk" className="transition hover:text-[#d7c7a2]">prismgroup.uk</a>
+        </div>
       </footer>
     </section>
   )
