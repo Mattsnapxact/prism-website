@@ -461,11 +461,11 @@ function HowItWorks() {
         </div>
         <div className="border border-white/[0.1] bg-white/[0.03] p-9 md:p-12">
           <p className="text-xs uppercase tracking-[0.38em] text-white/50">
-  The Executive Review
+  The Reviews
 </p>
 
 <p className="mt-8 font-serif text-3xl font-light leading-tight tracking-[-0.025em] text-white md:text-4xl">
-  Built for leadership.
+  Two reviews. One clearer picture.
 </p>
 
 <p className="mt-2 text-sm uppercase tracking-[0.28em] text-[#d7c7a2]/85">
@@ -475,26 +475,34 @@ function HowItWorks() {
 <p className="mt-8 max-w-md text-lg leading-relaxed text-white/72">
   Every Executive Intelligence Review is a structured investigation into the relationships hidden within your existing information. It brings together condition, compliance, assets, funding and operational insight into a single executive view designed to improve confidence in strategic decision-making.
 </p>
-          <div className="mt-10 flex flex-wrap gap-6">
-
-  <a
-    href={reviewEmail}
-    className="inline-flex items-center gap-6 border-b border-[#d7c7a2]/70 pb-3 text-sm text-white transition hover:border-white hover:text-[#d7c7a2]"
-  >
-    Request an Executive Review
-    <span aria-hidden="true">→</span>
+          <div className="mt-12 grid gap-5 lg:grid-cols-2">
+  <div className="border border-white/12 bg-black/35 p-7 md:p-8">
+    <p className="text-[0.65rem] uppercase tracking-[0.3em] text-[#d7c7a2]">For individual schools</p>
+    <h3 className="mt-4 font-serif text-3xl font-light text-white md:text-4xl">Primary School Review</h3>
+    <p className="mt-4 min-h-[5.5rem] text-base leading-relaxed text-white/70">
+      A focused review of one school's asset information, highlighting financial exposure, audit readiness, replacement priorities and the decisions that need attention.
+    </p>
+    <a href="/estate-intelligence-review.pdf" target="_blank" rel="noopener noreferrer"
+      className="mt-7 flex min-h-14 w-full items-center justify-center gap-3 border border-[#d7c7a2] bg-[#d7c7a2] px-5 py-4 text-center text-sm font-semibold tracking-wide text-black transition hover:bg-white hover:border-white">
+      View Primary School Sample Review <span aria-hidden="true">↗</span>
+    </a>
+  </div>
+  <div className="border border-white/12 bg-black/35 p-7 md:p-8">
+    <p className="text-[0.65rem] uppercase tracking-[0.3em] text-[#d7c7a2]">For multi-academy trusts</p>
+    <h3 className="mt-4 font-serif text-3xl font-light text-white md:text-4xl">Trust-Wide Review</h3>
+    <p className="mt-4 min-h-[5.5rem] text-base leading-relaxed text-white/70">
+      A consolidated view across schools, revealing portfolio-wide patterns, inconsistencies between registers, replacement pressure and strategic priorities for the trust.
+    </p>
+    <a href="/trust-estate-intelligence-review.pdf" target="_blank" rel="noopener noreferrer"
+      className="mt-7 flex min-h-14 w-full items-center justify-center gap-3 border border-[#d7c7a2] bg-transparent px-5 py-4 text-center text-sm font-semibold tracking-wide text-white transition hover:bg-[#d7c7a2] hover:text-black">
+      View Trust Sample Review <span aria-hidden="true">↗</span>
+    </a>
+  </div>
+</div>
+<div className="mt-7">
+  <a href={reviewEmail} className="inline-flex min-h-14 items-center justify-center gap-4 border border-white/30 px-7 py-4 text-sm text-white transition hover:border-[#d7c7a2] hover:text-[#d7c7a2]">
+    Request a Review <span aria-hidden="true">→</span>
   </a>
-
-  <a
-    href="/estate-intelligence-review.pdf"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="inline-flex items-center gap-6 border-b border-white/25 pb-3 text-sm text-white/75 transition hover:border-[#d7c7a2] hover:text-[#d7c7a2]"
-  >
-    View Sample Review
-    <span aria-hidden="true">↗</span>
-  </a>
-
 </div>
         </div>
       </div>
