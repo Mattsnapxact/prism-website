@@ -594,7 +594,7 @@ function FinalCTA() {
           <p className="mt-3">Executive Visibility</p>
         </div>
         <address className="not-italic leading-relaxed">
-          <span className="mb-2 block uppercase tracking-[0.22em] text-white/65">Registered contact address</span>
+          <span className="mb-2 block uppercase tracking-[0.22em] text-white/65">Contact address</span>
           Remembrance Way<br />
           Macclesfield<br />
           SK10 1LF
